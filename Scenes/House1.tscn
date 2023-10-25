@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5pj55dj7a0q3"]
+[gd_scene load_steps=3 format=3 uid="uid://b5pj55dj7a0q3"]
 
 [ext_resource type="PackedScene" uid="uid://b1j3depx85yxn" path="res://Models/House_01_full.gltf" id="1_5ey30"]
 
-[node name="House1" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ir6wm"]
+transparency = 1
 
-[node name="House_01_full" parent="." instance=ExtResource("1_5ey30")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+[node name="House1" instance=ExtResource("1_5ey30")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="WINDOW_03_1_001" parent="." index="40"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ir6wm")

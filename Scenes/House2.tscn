@@ -2,7 +2,5 @@
 
 [ext_resource type="PackedScene" uid="uid://cgb4hp1hbf8yf" path="res://Models/House_02_full.gltf" id="1_ymfh8"]
 
-[node name="House2" type="Node3D"]
-
-[node name="House_02_full" parent="." instance=ExtResource("1_ymfh8")]
-transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 0, 0)
+[node name="House2" instance=ExtResource("1_ymfh8")]
+transform = Transform3D(0.015, 0, 0, 0, 0.015, 0, 0, 0, 0.015, 0, 0, 0)

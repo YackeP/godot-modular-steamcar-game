@@ -1,0 +1,192 @@
+[gd_scene load_steps=3 format=3 uid="uid://xqtnsgfqjqyv"]
+
+[ext_resource type="PackedScene" uid="uid://bwtteby1w6fxt" path="res://Scenes/House2.tscn" id="1_ugnyf"]
+[ext_resource type="Material" uid="uid://yunvghvdw2j3" path="res://Materials/HouseGhostMaterial.tres" id="2_kwyck"]
+
+[node name="House2Ghost" instance=ExtResource("1_ugnyf")]
+
+[node name="DOOR_01_2" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="WALL_03_2" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="WINDOW_04_2" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="WALL_04_2" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="WALL_04_3" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="WINDOW_07_2" parent="." index="5"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="WALL_04_4" parent="." index="6"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="WALL_04_5" parent="." index="7"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="WINDOW_07_3" parent="." index="8"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="WALL_04_6" parent="." index="9"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="WALL_04_7" parent="." index="10"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="WINDOW_07_4" parent="." index="11"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="WALL_04_8" parent="." index="12"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="WALL_04_9" parent="." index="13"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_triangles_up_wood_2" parent="." index="14"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_triangles_up_wood_3" parent="." index="15"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_triangles_up_wood_4" parent="." index="16"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_triangles_up_wood_5" parent="." index="17"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_2" parent="." index="18"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_inner_corner_2" parent="." index="19"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_3" parent="." index="20"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_3" parent="." index="21"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_4" parent="." index="22"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_5" parent="." index="23"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_6" parent="." index="24"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_small_inner_corner_3" parent="." index="25"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_small_inner_corner_4" parent="." index="26"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_7" parent="." index="27"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_8" parent="." index="28"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_4" parent="." index="29"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_inner_corner_3" parent="." index="30"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_9" parent="." index="31"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_10" parent="." index="32"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_5" parent="." index="33"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_6" parent="." index="34"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_7" parent="." index="35"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_inner_corner_4" parent="." index="36"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_11" parent="." index="37"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_12" parent="." index="38"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_small_inner_corner_5" parent="." index="39"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_13" parent="." index="40"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_14" parent="." index="41"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_inner_corner_5" parent="." index="42"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_8" parent="." index="43"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_9" parent="." index="44"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_15" parent="." index="45"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_16" parent="." index="46"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_small_inner_corner_6" parent="." index="47"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_17" parent="." index="48"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_base_small_18" parent="." index="49"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_Window_round_2" parent="." index="50"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_trinagle_right_wood_2" parent="." index="51"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_trinagle_left_wood_2" parent="." index="52"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_trinagle_left_wood_3" parent="." index="53"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_Window_round_3" parent="." index="54"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_trinagle_right_wood_3" parent="." index="55"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_trinagle_left_wood_4" parent="." index="56"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_Window_round_4" parent="." index="57"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_trinagle_right_wood_4" parent="." index="58"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_trinagle_left_wood_5" parent="." index="59"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_Window_round_5" parent="." index="60"]
+surface_material_override/0 = ExtResource("2_kwyck")
+
+[node name="ROOF_trinagle_right_wood_5" parent="." index="61"]
+surface_material_override/0 = ExtResource("2_kwyck")
