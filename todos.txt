@@ -1,0 +1,4 @@
+- Make it impossible to put 2 houses on the same tile
+- Variable tile size houses
+- UI for selecting the houses
+- 

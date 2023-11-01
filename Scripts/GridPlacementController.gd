@@ -5,6 +5,7 @@ class_name GridPlacementController
 var houseScene1: PackedScene = preload("res://Scenes/House1.tscn")
 var houseScene2: PackedScene = preload("res://Scenes/House2.tscn")
 
+# TODO: don't use separate scene, just apply a different shader or material to the house scenes.
 var houseGhostScene1: PackedScene = preload("res://Scenes/House1Ghost.tscn")
 var houseGhostScene2: PackedScene = preload("res://Scenes/House2Ghost.tscn")
 

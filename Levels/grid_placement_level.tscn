@@ -1,19 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6c8qvi412c8w"]
+[gd_scene load_steps=5 format=3 uid="uid://b6c8qvi412c8w"]
 
 [ext_resource type="PackedScene" uid="uid://b1j3depx85yxn" path="res://Models/House_01_full.gltf" id="1_1oy6y"]
-[ext_resource type="Texture2D" uid="uid://cmw3f2q75sva2" path="res://Textures/Wood10_MR_1K/Wood10_1K_BaseColor.png" id="1_mp7pf"]
 [ext_resource type="Script" path="res://Scripts/GridPlacementController.gd" id="1_r2yk8"]
 [ext_resource type="PackedScene" uid="uid://cgb4hp1hbf8yf" path="res://Models/House_02_full.gltf" id="2_20cty"]
-[ext_resource type="Texture2D" uid="uid://do2wrlhp6xg3w" path="res://Textures/Soapstone01_MR_1K/Soapstone01_1K_BaseColor.png" id="2_agmgk"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8vml"]
-albedo_texture = ExtResource("2_agmgk")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4d2ko"]
-albedo_texture = ExtResource("1_mp7pf")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8g7n8"]
-size = Vector3(1, 0.322945, 1)
+[ext_resource type="PackedScene" uid="uid://jmr48tafi0tm" path="res://Scenes/GridSpace.tscn" id="2_jqtlm"]
 
 [node name="root" type="Node3D"]
 script = ExtResource("1_r2yk8")
@@ -29,139 +19,31 @@ size = 5.61
 
 [node name="GridMap" type="GridMap" parent="."]
 
-[node name="GridSpace" type="StaticBody3D" parent="GridMap"]
+[node name="GridSpace" parent="GridMap" instance=ExtResource("2_jqtlm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="GridMap/GridSpace"]
-transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
-material = SubResource("StandardMaterial3D_f8vml")
+[node name="GridSpace10" parent="GridMap" instance=ExtResource("2_jqtlm")]
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="GridMap/GridSpace"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-size = Vector3(0.8, 0.1, 0.8)
-material = SubResource("StandardMaterial3D_4d2ko")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/GridSpace"]
-shape = SubResource("BoxShape3D_8g7n8")
-
-[node name="GridSpace8" type="StaticBody3D" parent="GridMap"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="GridMap/GridSpace8"]
-transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
-material = SubResource("StandardMaterial3D_f8vml")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="GridMap/GridSpace8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-size = Vector3(0.8, 0.1, 0.8)
-material = SubResource("StandardMaterial3D_4d2ko")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/GridSpace8"]
-shape = SubResource("BoxShape3D_8g7n8")
-
-[node name="GridSpace9" type="StaticBody3D" parent="GridMap"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="GridMap/GridSpace9"]
-transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
-material = SubResource("StandardMaterial3D_f8vml")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="GridMap/GridSpace9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-size = Vector3(0.8, 0.1, 0.8)
-material = SubResource("StandardMaterial3D_4d2ko")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/GridSpace9"]
-shape = SubResource("BoxShape3D_8g7n8")
-
-[node name="GridSpace2" type="StaticBody3D" parent="GridMap"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="GridMap/GridSpace2"]
-transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
-material = SubResource("StandardMaterial3D_f8vml")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="GridMap/GridSpace2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-size = Vector3(0.8, 0.1, 0.8)
-material = SubResource("StandardMaterial3D_4d2ko")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/GridSpace2"]
-shape = SubResource("BoxShape3D_8g7n8")
-
-[node name="GridSpace3" type="StaticBody3D" parent="GridMap"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="GridMap/GridSpace3"]
-transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
-material = SubResource("StandardMaterial3D_f8vml")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="GridMap/GridSpace3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-size = Vector3(0.8, 0.1, 0.8)
-material = SubResource("StandardMaterial3D_4d2ko")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/GridSpace3"]
-shape = SubResource("BoxShape3D_8g7n8")
-
-[node name="GridSpace4" type="StaticBody3D" parent="GridMap"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="GridMap/GridSpace4"]
-transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
-material = SubResource("StandardMaterial3D_f8vml")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="GridMap/GridSpace4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-size = Vector3(0.8, 0.1, 0.8)
-material = SubResource("StandardMaterial3D_4d2ko")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/GridSpace4"]
-shape = SubResource("BoxShape3D_8g7n8")
-
-[node name="GridSpace5" type="StaticBody3D" parent="GridMap"]
+[node name="GridSpace11" parent="GridMap" instance=ExtResource("2_jqtlm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="GridMap/GridSpace5"]
-transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
-material = SubResource("StandardMaterial3D_f8vml")
+[node name="GridSpace2" parent="GridMap" instance=ExtResource("2_jqtlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="GridMap/GridSpace5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-size = Vector3(0.8, 0.1, 0.8)
-material = SubResource("StandardMaterial3D_4d2ko")
+[node name="GridSpace12" parent="GridMap" instance=ExtResource("2_jqtlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/GridSpace5"]
-shape = SubResource("BoxShape3D_8g7n8")
-
-[node name="GridSpace6" type="StaticBody3D" parent="GridMap"]
+[node name="GridSpace13" parent="GridMap" instance=ExtResource("2_jqtlm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="GridMap/GridSpace6"]
-transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
-material = SubResource("StandardMaterial3D_f8vml")
+[node name="GridSpace3" parent="GridMap" instance=ExtResource("2_jqtlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="GridMap/GridSpace6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-size = Vector3(0.8, 0.1, 0.8)
-material = SubResource("StandardMaterial3D_4d2ko")
+[node name="GridSpace14" parent="GridMap" instance=ExtResource("2_jqtlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/GridSpace6"]
-shape = SubResource("BoxShape3D_8g7n8")
-
-[node name="GridSpace7" type="StaticBody3D" parent="GridMap"]
+[node name="GridSpace15" parent="GridMap" instance=ExtResource("2_jqtlm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="GridMap/GridSpace7"]
-transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
-material = SubResource("StandardMaterial3D_f8vml")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="GridMap/GridSpace7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-size = Vector3(0.8, 0.1, 0.8)
-material = SubResource("StandardMaterial3D_4d2ko")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GridMap/GridSpace7"]
-shape = SubResource("BoxShape3D_8g7n8")
 
 [node name="House_01_full" parent="." instance=ExtResource("1_1oy6y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8575, 0, 0)
