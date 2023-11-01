@@ -17,50 +17,48 @@ const ray_length = 1000
 
 func _physics_process(delta) -> void:
 	if selectedHouseScene != null:
-		var result: Dictionary = getObjectHitByMouse()
+		var hitGridSpace = getGridSpaceHitByMouse()
 		
-		if !result.is_empty():
-			var result_pos = result['position']
+		if hitGridSpace != null:
 			if houseGhost == null:
-				createGhost(houseGhostScene1 if selectedHouseScene == houseScene1 else houseGhostScene2)
+				_createGhost(houseGhostScene1 if selectedHouseScene == houseScene1 else houseGhostScene2)
 			
-			houseGhost.position = getNearestGridPosition(result_pos)
+			houseGhost.position = getNearestGridPosition(hitGridSpace.position)
 		elif houseGhost != null:
-			removeGhost()
+			_removeGhost()
 
 
 func _input(event):
 	if event is InputEventKey:
 		if event.keycode == KEY_1:
 			selectedHouseScene = houseScene1
-			removeGhost()
-			createGhost(houseGhostScene1)
+			_removeGhost()
+			_createGhost(houseGhostScene1)
 		elif event.keycode == KEY_2:
 			selectedHouseScene = houseScene2
-			removeGhost()
-			createGhost(houseGhostScene2)
+			_removeGhost()
+			_createGhost(houseGhostScene2)
 	
 	elif event is InputEventMouseButton and event.pressed and event.button_index == 1 and selectedHouseScene != null:
-		print("Clicked button")
-		var result: Dictionary = getObjectHitByMouse()
+		var hitGridSpace = getGridSpaceHitByMouse()
 		
-		if !result.is_empty():
-			var result_pos = result['position']
-			createGridObject(selectedHouseScene, result_pos)
-			print(result)
+		if hitGridSpace != null:
+			hitGridSpace.takeSpace()
+			_createGridObject(selectedHouseScene, hitGridSpace.position)
+			print(hitGridSpace)
 
 
-func removeGhost() -> void:
+func _removeGhost() -> void:
 	if( houseGhost != null):
 		houseGhost.queue_free()
 		remove_child(houseGhost)
 
-func createGhost(ghost: PackedScene) -> void:
+func _createGhost(ghost: PackedScene) -> void:
 	var ghostInstance = ghost.instantiate()
 	houseGhost = ghostInstance
 	add_child(ghostInstance)
 	
-func createGridObject(object: PackedScene, pos: Vector3) -> void:
+func _createGridObject(object: PackedScene, pos: Vector3) -> void:
 	var objectInstance = object.instantiate()
 	add_child(objectInstance)
 	objectInstance.position = getNearestGridPosition(pos)
@@ -77,3 +75,10 @@ func getObjectHitByMouse() -> Dictionary:
 	var space_state = get_world_3d().direct_space_state
 	return space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from, to)) 
 	
+func getGridSpaceHitByMouse() -> GridSpace:
+	var objectHitByMouse = getObjectHitByMouse()
+	if objectHitByMouse.is_empty():
+		return null
+	if objectHitByMouse['collider'] is GridSpace:
+		return objectHitByMouse['collider'] as GridSpace
+	return null
