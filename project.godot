@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 import/fbx/enabled=false
 
+[layer_names]
+
+3d_physics/layer_5="Grid Slot"
+3d_physics/layer_6="Ghost Placement Slot"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

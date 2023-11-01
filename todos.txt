@@ -1,4 +1,8 @@
-- Make it impossible to put 2 houses on the same tile
-- Variable tile size houses
-- UI for selecting the houses
-- 
+- [x] Make it impossible to put 2 houses on the same tile
+- [ ] Variable tile size houses
+	- How to set this in an extensible, not-fucky way?
+	- Shared tiles of size 1 with a collider, same for grid elements and houses. 
+		Each house can have multiple these colliders attached
+		When placing the house, we check every collider if it collides with a free grid space
+- [ ] UI for previewing the selected house
+- [ ] UI for selecting the houses 

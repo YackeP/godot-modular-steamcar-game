@@ -2,6 +2,8 @@ extends Node3D
 
 class_name GridPlacementController
 
+const gridSlotLayerMask := 0b00000000_00000000_00000000_00010000 # layer 5
+
 var houseScene1: PackedScene = preload("res://Scenes/House1.tscn")
 var houseScene2: PackedScene = preload("res://Scenes/House2.tscn")
 
@@ -73,12 +75,10 @@ func getObjectHitByMouse() -> Dictionary:
 	var from = camera.project_ray_origin(mousePos)
 	var to = from + camera.project_ray_normal(mousePos) * ray_length
 	var space_state = get_world_3d().direct_space_state
-	return space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from, to)) 
+	return space_state.intersect_ray(PhysicsRayQueryParameters3D.create(from, to, gridSlotLayerMask)) 
 	
 func getGridSpaceHitByMouse() -> GridSpace:
 	var objectHitByMouse = getObjectHitByMouse()
-	if objectHitByMouse.is_empty():
-		return null
-	if objectHitByMouse['collider'] is GridSpace:
+	if !objectHitByMouse.is_empty() && objectHitByMouse['collider'] is GridSpace:
 		return objectHitByMouse['collider'] as GridSpace
 	return null
