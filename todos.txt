@@ -4,5 +4,13 @@
 	- Shared tiles of size 1 with a collider, same for grid elements and houses. 
 		Each house can have multiple these colliders attached
 		When placing the house, we check every collider if it collides with a free grid space
+		1 base scene for a houseGhost, we can inherit from it later. It contains a node for the model, and for the colliders.
+			The root of this scene is just a Node3D
+			Attached to the root is a script with these methods:
+				checkSlots: checks if all the colliders in the Colliders node branch are colliding with a free grid slot
+					this doesn't actually need to be true - we can just check if ANY collider is NOT colliding with a free grid slot
+					this could actually cause some edge cases and false positives - the ghost colliders should maybe be smaller than 1x1 unit, like 0.9x0.9 units
+				
 - [ ] UI for previewing the selected house
 - [ ] UI for selecting the houses 
+- [ ] Changing ghost color when placement is invalid

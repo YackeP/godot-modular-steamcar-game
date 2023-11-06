@@ -6,10 +6,12 @@ const gridSlotLayerMask := 0b00000000_00000000_00000000_00010000 # layer 5
 
 var houseScene1: PackedScene = preload("res://Scenes/House1.tscn")
 var houseScene2: PackedScene = preload("res://Scenes/House2.tscn")
+var houseScene3: PackedScene = preload("res://Scenes/House4.tscn")
 
 # TODO: don't use separate scene, just apply a different shader or material to the house scenes.
 var houseGhostScene1: PackedScene = preload("res://Scenes/House1Ghost.tscn")
 var houseGhostScene2: PackedScene = preload("res://Scenes/House2Ghost.tscn")
+var houseGhostScene3: PackedScene = preload("res://Scenes/House4Ghost.tscn")
 
 var selectedHouseScene: PackedScene
 
@@ -40,6 +42,10 @@ func _input(event):
 			selectedHouseScene = houseScene2
 			_removeGhost()
 			_createGhost(houseGhostScene2)
+		elif event.keycode == KEY_3:
+			selectedHouseScene = houseScene3
+			_removeGhost()
+			_createGhost(houseGhostScene3)
 	
 	elif event is InputEventMouseButton and event.pressed and event.button_index == 1 and selectedHouseScene != null:
 		var hitGridSpace = getGridSpaceHitByMouse()
