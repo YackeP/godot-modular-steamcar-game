@@ -15,7 +15,7 @@ var houseGhostScene3: PackedScene = preload("res://Scenes/House4Ghost.tscn")
 
 var selectedHouseScene: PackedScene
 
-var houseGhost: Node3D
+var houseGhost: PlacementGhost
 
 const ray_length = 1000
 
@@ -25,8 +25,15 @@ func _physics_process(delta) -> void:
 		
 		if hitGridSpace != null:
 			if houseGhost == null:
-				_createGhost(houseGhostScene1 if selectedHouseScene == houseScene1 else houseGhostScene2)
-			
+				# TODO: refactor this 
+				match selectedHouseScene:
+					houseScene1:
+						_createGhost(houseGhostScene1)
+					houseScene2:
+						_createGhost(houseGhostScene2)
+					houseScene3:
+						_createGhost(houseGhostScene3)
+
 			houseGhost.position = getNearestGridPosition(hitGridSpace.position)
 		elif houseGhost != null:
 			_removeGhost()
@@ -51,9 +58,12 @@ func _input(event):
 		var hitGridSpace = getGridSpaceHitByMouse()
 		
 		if hitGridSpace != null:
-			hitGridSpace.takeSpace()
-			_createGridObject(selectedHouseScene, hitGridSpace.position)
-			print(hitGridSpace)
+			if houseGhost.overlapsAllSlots():
+				print("houseGhost.overlapsAllSlots()")
+				for gridSpace in houseGhost.getAllOverlappedSlots():
+					gridSpace.takeSpace()
+				_createGridObject(selectedHouseScene, hitGridSpace.position)	
+			print("hit grid space: ", hitGridSpace)
 
 
 func _removeGhost() -> void:
