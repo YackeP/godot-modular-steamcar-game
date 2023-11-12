@@ -1,5 +1,5 @@
 - [x] Make it impossible to put 2 houses on the same tile
-- [ ] Variable tile size houses
+- [x] Variable tile size houses
 	- How to set this in an extensible, not-fucky way?
 	- Shared tiles of size 1 with a collider, same for grid elements and houses. 
 		Each house can have multiple these colliders attached
@@ -10,7 +10,8 @@
 				checkSlots: checks if all the colliders in the Colliders node branch are colliding with a free grid slot
 					this doesn't actually need to be true - we can just check if ANY collider is NOT colliding with a free grid slot
 					this could actually cause some edge cases and false positives - the ghost colliders should maybe be smaller than 1x1 unit, like 0.9x0.9 units
-				
+- [ ] Ghost rotation
+- [ ] Neighbour counter
 - [ ] UI for previewing the selected house
 - [ ] UI for selecting the houses 
 - [ ] Changing ghost color when placement is invalid

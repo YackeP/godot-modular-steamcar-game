@@ -25,7 +25,7 @@ func _physics_process(delta) -> void:
 		
 		if hitGridSpace != null:
 			if houseGhost == null:
-				# TODO: refactor this 
+				# TODO: refactor this to support an arbirtary number of ghosts
 				match selectedHouseScene:
 					houseScene1:
 						_createGhost(houseGhostScene1)
@@ -55,15 +55,7 @@ func _input(event):
 			_createGhost(houseGhostScene3)
 	
 	elif event is InputEventMouseButton and event.pressed and event.button_index == 1 and selectedHouseScene != null:
-		var hitGridSpace = getGridSpaceHitByMouse()
-		
-		if hitGridSpace != null:
-			if houseGhost.overlapsAllSlots():
-				print("houseGhost.overlapsAllSlots()")
-				for gridSpace in houseGhost.getAllOverlappedSlots():
-					gridSpace.takeSpace()
-				_createGridObject(selectedHouseScene, hitGridSpace.position)	
-			print("hit grid space: ", hitGridSpace)
+		_tryPlaceGridObject()
 
 
 func _removeGhost() -> void:
@@ -76,10 +68,21 @@ func _createGhost(ghost: PackedScene) -> void:
 	houseGhost = ghostInstance
 	add_child(ghostInstance)
 	
-func _createGridObject(object: PackedScene, pos: Vector3) -> void:
-	var objectInstance = object.instantiate()
+func _createGridObject(object: PackedScene, pos: Vector3, rot: Vector3) -> void:
+	var objectInstance: Node3D = object.instantiate()
 	add_child(objectInstance)
 	objectInstance.position = getNearestGridPosition(pos)
+	objectInstance.rotation = rot
+
+func _tryPlaceGridObject():
+	var hitGridSpace = getGridSpaceHitByMouse()
+	if hitGridSpace != null:
+		if houseGhost.overlapsAllSlots():
+			print("houseGhost.overlapsAllSlots()")
+			for gridSpace in houseGhost.getAllOverlappedSlots():
+				gridSpace.takeSpace()
+			_createGridObject(selectedHouseScene, hitGridSpace.position, houseGhost.rotation)
+		print("Trying to place grid object, hit grid space: ", hitGridSpace)
 
 func getNearestGridPosition(rawPosition: Vector3) -> Vector3:
 	return Vector3(round(rawPosition.x), rawPosition.y, round(rawPosition.z))
