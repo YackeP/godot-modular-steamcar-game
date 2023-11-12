@@ -21,6 +21,7 @@ import/fbx/enabled=false
 
 [layer_names]
 
+3d_physics/layer_4="Building"
 3d_physics/layer_5="Grid Slot"
 3d_physics/layer_6="Ghost Placement Slot"
 

@@ -10,8 +10,9 @@
 				checkSlots: checks if all the colliders in the Colliders node branch are colliding with a free grid slot
 					this doesn't actually need to be true - we can just check if ANY collider is NOT colliding with a free grid slot
 					this could actually cause some edge cases and false positives - the ghost colliders should maybe be smaller than 1x1 unit, like 0.9x0.9 units
-- [ ] Ghost rotation
+- [x] Ghost rotation
 - [ ] Neighbour counter
+	- kinda done, but there is a bug in the engine
 - [ ] UI for previewing the selected house
 - [ ] UI for selecting the houses 
 - [ ] Changing ghost color when placement is invalid
