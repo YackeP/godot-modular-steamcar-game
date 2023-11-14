@@ -4,8 +4,6 @@ class_name GridPlacementController
 
 const gridSlotLayerMask := 0b00000000_00000000_00000000_00010000 # layer 5
 
-signal objectWasPlaced
-
 var houseScene1: PackedScene = preload("res://Scenes/House1.tscn")
 var houseScene2: PackedScene = preload("res://Scenes/House2.tscn")
 var houseScene3: PackedScene = preload("res://Scenes/House4.tscn")
@@ -72,7 +70,6 @@ func _createGridObject(object: PackedScene, pos: Vector3, rot: Vector3) -> void:
 	add_child(objectInstance)
 	objectInstance.position = getNearestGridPosition(pos)
 	objectInstance.rotation = rot
-	objectWasPlaced.emit()
 
 func _tryPlaceGridObject():
 	var hitGridSpace = getGridSpaceHitByMouse()
