@@ -24,6 +24,8 @@ import/fbx/enabled=false
 3d_physics/layer_4="Building"
 3d_physics/layer_5="Grid Slot"
 3d_physics/layer_6="Ghost Placement Slot"
+3d_physics/layer_7="Socket Input"
+3d_physics/layer_8="Socket Output"
 
 [rendering]
 

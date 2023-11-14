@@ -4,55 +4,39 @@ class_name GridPlacementController
 
 const gridSlotLayerMask := 0b00000000_00000000_00000000_00010000 # layer 5
 
-var houseScene1: PackedScene = preload("res://Scenes/House1.tscn")
-var houseScene2: PackedScene = preload("res://Scenes/House2.tscn")
-var houseScene3: PackedScene = preload("res://Scenes/House4.tscn")
+var placeableObjects: Array[PlaceableObjectDefinition] = [
+	PlaceableObjectDefinition.new(preload("res://Scenes/House1.tscn"),preload("res://Scenes/House1Ghost.tscn")),
+	PlaceableObjectDefinition.new(preload("res://Scenes/House2.tscn"), preload("res://Scenes/House2Ghost.tscn")),
+	PlaceableObjectDefinition.new(preload("res://Scenes/House4.tscn"), preload("res://Scenes/House4Ghost.tscn")),
+	PlaceableObjectDefinition.new(preload("res://Scenes/FuelTank.tscn"),preload("res://Scenes/FuelTankGhost.tscn"))
+]
 
-# TODO: don't use separate scene, just apply a different shader or material to the house scenes.
-var houseGhostScene1: PackedScene = preload("res://Scenes/House1Ghost.tscn")
-var houseGhostScene2: PackedScene = preload("res://Scenes/House2Ghost.tscn")
-var houseGhostScene3: PackedScene = preload("res://Scenes/House4Ghost.tscn")
-
-var selectedHouseScene: PackedScene
+var selectedPlaceable: PlaceableObjectDefinition
 
 var houseGhost: PlacementGhost
 
 const ray_length = 1000
 
 func _physics_process(delta) -> void:
-	if selectedHouseScene != null:
+	if selectedPlaceable != null:
 		var hitGridSpace = getGridSpaceHitByMouse()
 		
 		if hitGridSpace != null:
 			if houseGhost == null:
-				# TODO: refactor this to support an arbirtary number of ghosts
-				match selectedHouseScene:
-					houseScene1:
-						_createGhost(houseGhostScene1)
-					houseScene2:
-						_createGhost(houseGhostScene2)
-					houseScene3:
-						_createGhost(houseGhostScene3)
+				_createGhost(selectedPlaceable.ghost)
 			houseGhost.position = getNearestGridPosition(hitGridSpace.position)
 		elif houseGhost != null:
 			_removeGhost()
 
 func _input(event):
 	if event is InputEventKey:
-		if event.keycode == KEY_1:
-			selectedHouseScene = houseScene1
+		var pressedNumber = _get_pressed_number(event)
+		if (pressedNumber >= 0 and pressedNumber < placeableObjects.size()):
+			selectedPlaceable = placeableObjects[pressedNumber]
 			_removeGhost()
-			_createGhost(houseGhostScene1)
-		elif event.keycode == KEY_2:
-			selectedHouseScene = houseScene2
-			_removeGhost()
-			_createGhost(houseGhostScene2)
-		elif event.keycode == KEY_3:
-			selectedHouseScene = houseScene3
-			_removeGhost()
-			_createGhost(houseGhostScene3)
+			_createGhost(selectedPlaceable['ghost'])
 	
-	elif event is InputEventMouseButton and event.pressed and event.button_index == 1 and selectedHouseScene != null:
+	elif event is InputEventMouseButton and event.pressed and event.button_index == 1 and selectedPlaceable != null:
 		_tryPlaceGridObject()
 
 func _removeGhost() -> void:
@@ -78,7 +62,7 @@ func _tryPlaceGridObject():
 			print("houseGhost.overlapsAllSlots()")
 			for gridSpace in houseGhost.getAllOverlappedSlots():
 				gridSpace.takeSpace()
-			_createGridObject(selectedHouseScene, hitGridSpace.position, houseGhost.rotation)
+			_createGridObject(selectedPlaceable.object, hitGridSpace.position, houseGhost.rotation)
 		print("Trying to place grid object, hit grid space: ", hitGridSpace)
 
 func getNearestGridPosition(rawPosition: Vector3) -> Vector3:
@@ -98,3 +82,14 @@ func getGridSpaceHitByMouse() -> GridSpace:
 	if !objectHitByMouse.is_empty() && objectHitByMouse['collider'] is GridSpace:
 		return objectHitByMouse['collider'] as GridSpace
 	return null
+	
+func _get_pressed_number(event: InputEventKey):
+	return int(event.keycode) - 49 # if pressed     key 0 -> -1;    key 1 -> 0;		key 2 -> 1;
+
+class PlaceableObjectDefinition:
+	var object: PackedScene
+	var ghost: PackedScene
+	
+	func _init(obj, ghst):
+		object = obj
+		ghost = ghst
