@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnyx0lrcajea3"
-path.s3tc="res://.godot/imported/Soapstone01_1K_Normal.png-5f4e69fbe028d12534d0fc5ca58e9bbd.s3tc.ctex"
+uid="uid://cw2ogjthr35to"
+path.s3tc="res://.godot/imported/RockerEngineOverrideConnected.png-aba15438d174c402a962e2b68f7af816.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/Soapstone01_MR_1K/Soapstone01_1K_Normal.png"
-dest_files=["res://.godot/imported/Soapstone01_1K_Normal.png-5f4e69fbe028d12534d0fc5ca58e9bbd.s3tc.ctex"]
+source_file="res://Textures/RockerEngineOverrideConnected.png"
+dest_files=["res://.godot/imported/RockerEngineOverrideConnected.png-aba15438d174c402a962e2b68f7af816.s3tc.ctex"]
 
 [params]
 

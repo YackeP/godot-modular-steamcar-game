@@ -13,7 +13,7 @@ func _updateCounter()-> void:
 		textChild.text = str(newNumber)
 
 func _getNeigbourCount() -> int:
-	print("\t\tNeigbourChecker, neigbours:",neigbourCheckArea.get_overlapping_bodies()) 
+	Logger.info("\t\tNeigbourChecker, neigbours:",neigbourCheckArea.get_overlapping_bodies().reduce(func(acc: String, body:Node3D): return acc + ", " + body.name,"")) 
 	return neigbourCheckArea.get_overlapping_bodies().size() - 1 # one of these bodies is itself
 
 # this doesn't detect new bodies that are instantiated, just the initial creation
@@ -22,8 +22,8 @@ func _getNeigbourCount() -> int:
 	# https://github.com/godotengine/godot/issues/66468
 	# https://github.com/godot-jolt/godot-jolt/issues/391
 # so we have to do a workaround
-func _on_area_3d_body_entered(body):
-	print("onArea3dBodyEntered for : ",self.name , "\n\tbody:",body )
+func _on_area_3d_body_entered(body: StaticBody3D):
+	Logger.info("onArea3dBodyEntered for : " + self.name + "\tbody:" + body.name )
 	_updateCounter()
 
 # this is a workaround for the problem mentioned above - this will refresh the collisions on every frame

@@ -13,7 +13,7 @@
 - [x] Ghost rotation
 - [x] Neighbour counter
 	- kinda done, but there is a bug in the engine
-- [ ] Sockets, like "only 1 input socket at start, 1 output socket on right"
+- [x] Sockets, like "only 1 input socket at start, 1 output socket on right"
 	- special effect, or only allow to place stuff when on a socket
 	- can be achieved by a similar way like the NeighbourConter did -> Area3D per socket
 - [ ] UI for previewing the selected house

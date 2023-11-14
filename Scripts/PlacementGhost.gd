@@ -10,7 +10,7 @@ func _input(event):
 		rotation_degrees = Vector3(0, rotation_degrees.y + 90, 0)
 
 func overlapsAllSlots() -> bool:
-	print("Ghost is overlappingBodies:",gridArea.get_overlapping_bodies())
+	Logger.info("Ghost is overlappingBodies:",gridArea.get_overlapping_bodies().reduce(func(acc: String, body:Node3D): return acc + ", " + body.name,""))
 	var gridSize = gridArea.get_child_count()
 	return gridArea.get_overlapping_bodies().filter(_bodyIsGridSpace).size() == gridSize
 

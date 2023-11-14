@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bk4k0ahk51pkf"]
+[gd_scene load_steps=12 format=3 uid="uid://bk4k0ahk51pkf"]
 
 [ext_resource type="Script" path="res://Scripts/Grid Objects/FuelTank.gd" id="1_js2v4"]
 [ext_resource type="Shape3D" uid="uid://dfdse2c1n21jl" path="res://Scenes/GridColliderShape.tres" id="1_w5hlb"]
+[ext_resource type="Shape3D" uid="uid://hhwcvjhrhjju" path="res://Scenes/SocketShape.tres" id="3_e33rm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xha5h"]
 resource_name = "mat24"
@@ -176,13 +177,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6n4el")
 
-[node name="Cylinder" type="StaticBody3D"]
+[node name="Cylinder" type="StaticBody3D" node_paths=PackedStringArray("outputSocket", "mesh")]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_js2v4")
+outputSocket = NodePath("Output Socket")
+mesh = NodePath("Node")
 
 [node name="Node" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0585071, 0, -0.114713)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059, 0.436931, -0.115)
 mesh = SubResource("ArrayMesh_m77px")
 skeleton = NodePath("")
 
@@ -190,7 +193,11 @@ skeleton = NodePath("")
 shape = ExtResource("1_w5hlb")
 
 [node name="Output Socket" type="Area3D" parent="."]
+collision_layer = 128
+collision_mask = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Output Socket"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-shape = ExtResource("1_w5hlb")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+shape = ExtResource("3_e33rm")
+
+[connection signal="area_entered" from="Output Socket" to="." method="_on_output_socket_area_entered"]

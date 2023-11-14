@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch01hsiboua63"]
+[gd_scene load_steps=13 format=3 uid="uid://ch01hsiboua63"]
 
 [ext_resource type="Script" path="res://Scripts/PlacementGhost.gd" id="1_ovf66"]
 [ext_resource type="Shape3D" uid="uid://b1e733t1wa7y5" path="res://Scenes/GridColliderGhostShape.tres" id="2_ha6xx"]
 [ext_resource type="Material" uid="uid://yunvghvdw2j3" path="res://Materials/HouseGhostMaterial.tres" id="2_wedrp"]
+[ext_resource type="Shape3D" uid="uid://hhwcvjhrhjju" path="res://Scenes/SocketShape.tres" id="4_shei0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xha5h"]
 resource_name = "mat24"
@@ -181,12 +182,22 @@ script = ExtResource("1_ovf66")
 gridArea = NodePath("Placement")
 
 [node name="Node" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0585071, 0, -0.114713)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059, 0.437, -0.115)
 mesh = SubResource("ArrayMesh_m77px")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_wedrp")
 
 [node name="Placement" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Placement"]
 shape = ExtResource("2_ha6xx")
+
+[node name="Output Socket" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Output Socket"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+shape = ExtResource("4_shei0")

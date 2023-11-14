@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bj0q0rsl30bq3"]
+
+[ext_resource type="Texture2D" uid="uid://cw2ogjthr35to" path="res://Textures/RockerEngineOverrideConnected.png" id="1_6ght1"]
+
+[resource]
+albedo_texture = ExtResource("1_6ght1")

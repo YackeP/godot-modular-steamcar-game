@@ -8,7 +8,8 @@ var placeableObjects: Array[PlaceableObjectDefinition] = [
 	PlaceableObjectDefinition.new(preload("res://Scenes/House1.tscn"),preload("res://Scenes/House1Ghost.tscn")),
 	PlaceableObjectDefinition.new(preload("res://Scenes/House2.tscn"), preload("res://Scenes/House2Ghost.tscn")),
 	PlaceableObjectDefinition.new(preload("res://Scenes/House4.tscn"), preload("res://Scenes/House4Ghost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/FuelTank.tscn"),preload("res://Scenes/FuelTankGhost.tscn"))
+	PlaceableObjectDefinition.new(preload("res://Scenes/FuelTank.tscn"),preload("res://Scenes/FuelTankGhost.tscn")),
+	PlaceableObjectDefinition.new(preload("res://Scenes/RocketEngine.tscn"),preload("res://Scenes/RocketEngineGhost.tscn"))
 ]
 
 var selectedPlaceable: PlaceableObjectDefinition
@@ -20,7 +21,6 @@ const ray_length = 1000
 func _physics_process(delta) -> void:
 	if selectedPlaceable != null:
 		var hitGridSpace = getGridSpaceHitByMouse()
-		
 		if hitGridSpace != null:
 			if houseGhost == null:
 				_createGhost(selectedPlaceable.ghost)
@@ -59,11 +59,11 @@ func _tryPlaceGridObject():
 	var hitGridSpace = getGridSpaceHitByMouse()
 	if hitGridSpace != null:
 		if houseGhost.overlapsAllSlots():
-			print("houseGhost.overlapsAllSlots()")
 			for gridSpace in houseGhost.getAllOverlappedSlots():
 				gridSpace.takeSpace()
 			_createGridObject(selectedPlaceable.object, hitGridSpace.position, houseGhost.rotation)
-		print("Trying to place grid object, hit grid space: ", hitGridSpace)
+		else:
+			Logger.info("Can not place object, not all slots are overlapping!")
 
 func getNearestGridPosition(rawPosition: Vector3) -> Vector3:
 	return Vector3(round(rawPosition.x), rawPosition.y, round(rawPosition.z))
