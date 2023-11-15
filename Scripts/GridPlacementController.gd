@@ -5,11 +5,11 @@ class_name GridPlacementController
 const gridSlotLayerMask := 0b00000000_00000000_00000000_00010000 # layer 5
 
 var placeableObjects: Array[PlaceableObjectDefinition] = [
-	PlaceableObjectDefinition.new(preload("res://Scenes/House1.tscn"),preload("res://Scenes/House1Ghost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/House2.tscn"), preload("res://Scenes/House2Ghost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/House4.tscn"), preload("res://Scenes/House4Ghost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/FuelTank.tscn"),preload("res://Scenes/FuelTankGhost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/RocketEngine.tscn"),preload("res://Scenes/RocketEngineGhost.tscn"))
+	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/House1.tscn"),preload("res://Scenes/PlacedObjectGhosts/House1Ghost.tscn")),
+	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/House2.tscn"), preload("res://Scenes/PlacedObjectGhosts/House2Ghost.tscn")),
+	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/House4.tscn"), preload("res://Scenes/PlacedObjectGhosts/House4Ghost.tscn")),
+	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/FuelTank.tscn"),preload("res://Scenes/PlacedObjectGhosts/FuelTankGhost.tscn")),
+	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/RocketEngine.tscn"),preload("res://Scenes/PlacedObjectGhosts/RocketEngineGhost.tscn"))
 ]
 
 var selectedPlaceable: PlaceableObjectDefinition

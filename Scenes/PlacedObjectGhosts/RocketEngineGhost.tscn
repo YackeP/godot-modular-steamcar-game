@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsx6ancqy7g8i"]
+
+[ext_resource type="PackedScene" uid="uid://imm6brf2ebfi" path="res://Models/Space engine.glb" id="1_bjou7"]
+[ext_resource type="Script" path="res://Scripts/PlacementGhost.gd" id="2_hg8s5"]
+[ext_resource type="Material" uid="uid://yunvghvdw2j3" path="res://Materials/HouseGhostMaterial.tres" id="3_r61qt"]
+[ext_resource type="Shape3D" uid="uid://b1e733t1wa7y5" path="res://Scenes/GridColliderGhostShape.tres" id="4_x5wrx"]
+[ext_resource type="Shape3D" uid="uid://hhwcvjhrhjju" path="res://Scenes/SocketShape.tres" id="5_mh2dn"]
+
+[node name="Space engine" node_paths=PackedStringArray("gridArea") instance=ExtResource("1_bjou7")]
+script = ExtResource("2_hg8s5")
+gridArea = NodePath("Placement")
+
+[node name="SpaceEngine_mesh" parent="." index="0"]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0, 0.485402)
+surface_material_override/0 = ExtResource("3_r61qt")
+
+[node name="Placement" type="Area3D" parent="." index="1"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Placement" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+shape = ExtResource("4_x5wrx")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Placement" index="1"]
+shape = ExtResource("4_x5wrx")
+
+[node name="Input Socket" type="Area3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Input Socket" index="0"]
+shape = ExtResource("5_mh2dn")

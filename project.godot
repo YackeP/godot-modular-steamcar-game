@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 Logger="*res://addons/godot-logger-master/logger.gd"
 
+[debug]
+
+shapes/collision/shape_color=Color(1, 1, 1, 0.419608)
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-logger-master/plugin.cfg")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6c8qvi412c8w"]
+[gd_scene load_steps=6 format=3 uid="uid://b6c8qvi412c8w"]
 
 [ext_resource type="PackedScene" uid="uid://b1j3depx85yxn" path="res://Models/House_01_full.gltf" id="1_1oy6y"]
 [ext_resource type="Script" path="res://Scripts/GridPlacementController.gd" id="1_r2yk8"]
 [ext_resource type="PackedScene" uid="uid://cgb4hp1hbf8yf" path="res://Models/House_02_full.gltf" id="2_20cty"]
 [ext_resource type="PackedScene" uid="uid://jmr48tafi0tm" path="res://Scenes/GridSpace.tscn" id="2_jqtlm"]
+[ext_resource type="PackedScene" uid="uid://ceutc06ahdbxi" path="res://Scenes/WallInputSocket.tscn" id="3_p4qu7"]
 
 [node name="GridPlacementController" type="Node3D"]
 script = ExtResource("1_r2yk8")
@@ -44,6 +45,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="GridSpace15" parent="GridMap" instance=ExtResource("2_jqtlm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="WallInputSocket" parent="GridMap" instance=ExtResource("3_p4qu7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="WallInputSocket2" parent="GridMap" instance=ExtResource("3_p4qu7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -1)
+
+[node name="WallInputSocket3" parent="GridMap" instance=ExtResource("3_p4qu7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 1)
 
 [node name="House_01_full" parent="." instance=ExtResource("1_1oy6y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8575, 0, 0)

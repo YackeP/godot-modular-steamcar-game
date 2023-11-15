@@ -7,7 +7,7 @@ class_name FuelTank
 
 var socketFilledMaterial = preload("res://Textures/FuelTankOverrideConnected.tres")
 
-# this is a workaround for the problem mentioned above - this will refresh the collisions on every frame
+# this is a workaround for the Area3D and static objects bug - this will refresh the collisions on every frame
 func _physics_process(delta):
 	# Considering "area" an Area3D, and layer 32 an unused layer 
 	outputSocket.set_collision_layer_value(32, not outputSocket.get_collision_layer_value(32))
