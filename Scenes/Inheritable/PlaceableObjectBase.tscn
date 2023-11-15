@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://4ilcykpoex52"]
-
-[node name="PlaceableObjectBase" type="StaticBody3D"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]

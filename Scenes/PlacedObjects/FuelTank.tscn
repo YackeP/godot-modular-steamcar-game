@@ -176,14 +176,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6n4el")
 
-[node name="Cylinder" type="StaticBody3D" node_paths=PackedStringArray("outputSocket", "mesh")]
+[node name="Cylinder" type="StaticBody3D"]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_l883p")
-outputSocket = NodePath("Output Socket")
-mesh = NodePath("Node")
 
-[node name="Node" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059, 0.436931, -0.115)
 mesh = SubResource("ArrayMesh_m77px")
 skeleton = NodePath("")

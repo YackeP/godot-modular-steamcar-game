@@ -13,10 +13,9 @@ albedo_color = Color(1, 0.0156863, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rjmgl"]
 size = Vector3(1, 0.6, 0.5)
 
-[node name="WallInputSocket" type="StaticBody3D" node_paths=PackedStringArray("mesh")]
+[node name="WallInputSocket" type="StaticBody3D"]
 collision_mask = 64
 script = ExtResource("1_sr8h6")
-mesh = NodePath("CSGBox3D4")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.1, 0.15)

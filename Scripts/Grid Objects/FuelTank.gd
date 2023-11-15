@@ -2,10 +2,10 @@ extends StaticBody3D
 
 class_name FuelTank
 
-@export var outputSocket: Area3D
-@export var mesh: MeshInstance3D
+const SOCKET_FILLED_MATERIAL = preload("res://Textures/FuelTankOverrideConnected.tres")
 
-var socketFilledMaterial = preload("res://Textures/FuelTankOverrideConnected.tres")
+@onready var mesh: MeshInstance3D = get_node("Mesh")
+@onready var outputSocket: Area3D = get_node("Output Socket")
 
 # this is a workaround for the Area3D and static objects bug - this will refresh the collisions on every frame
 func _physics_process(delta):
@@ -14,4 +14,4 @@ func _physics_process(delta):
 
 func _on_output_socket_area_entered(area: Area3D):
 	Logger.info("Output socket filled: " + self.name + ", area:"+ area.name)
-	mesh.set_surface_override_material(0, socketFilledMaterial)
+	mesh.set_surface_override_material(0, SOCKET_FILLED_MATERIAL)

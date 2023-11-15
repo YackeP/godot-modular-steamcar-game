@@ -44,12 +44,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6u2wx")
 
-[node name="Space engine" type="StaticBody3D" node_paths=PackedStringArray("inputSocket", "mesh")]
+[node name="Space engine" type="StaticBody3D"]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_t38fj")
-inputSocket = NodePath("Input Socket")
-mesh = NodePath("SpaceEngine_mesh")
 
 [node name="SpaceEngine_mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0, 0.485402)

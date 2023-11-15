@@ -2,9 +2,8 @@ extends StaticBody3D
 
 class_name NeighbourCounter
 
-@export var textLabelParent: Node3D
-@export var neigbourCheckArea: Area3D
-
+@onready var textLabelParent: Node3D = get_node("Text Labels")
+@onready var neighbourCheckArea: Area3D = get_node("NeighbourCheckArea")
 
 func _updateCounter()-> void:
 	var newNumber:int = _getNeigbourCount()
@@ -13,8 +12,8 @@ func _updateCounter()-> void:
 		textChild.text = str(newNumber)
 
 func _getNeigbourCount() -> int:
-	Logger.info("\t\tNeigbourChecker, neigbours:",neigbourCheckArea.get_overlapping_bodies().reduce(func(acc: String, body:Node3D): return acc + ", " + body.name,"")) 
-	return neigbourCheckArea.get_overlapping_bodies().size() - 1 # one of these bodies is itself
+	Logger.info("\t\tNeigbourChecker, neigbours:",neighbourCheckArea.get_overlapping_bodies().reduce(func(acc: String, body:Node3D): return acc + ", " + body.name,"")) 
+	return neighbourCheckArea.get_overlapping_bodies().size() - 1 # one of these bodies is itself
 
 # this doesn't detect new bodies that are instantiated, just the initial creation
 # this is due to a bug:
@@ -29,5 +28,5 @@ func _on_area_3d_body_entered(body: StaticBody3D):
 # this is a workaround for the problem mentioned above - this will refresh the collisions on every frame
 func _physics_process(delta):
 	# Considering "area" an Area3D, and layer 32 an unused layer 
-	neigbourCheckArea.set_collision_layer_value(32, not neigbourCheckArea.get_collision_layer_value(32))
+	neighbourCheckArea.set_collision_layer_value(32, not neighbourCheckArea.get_collision_layer_value(32))
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://ch01hsiboua63"]
+[gd_scene load_steps=14 format=3 uid="uid://ch01hsiboua63"]
 
 [ext_resource type="Script" path="res://Scripts/PlacementGhost.gd" id="1_1mnjp"]
 [ext_resource type="Material" uid="uid://yunvghvdw2j3" path="res://Materials/HouseGhostMaterial.tres" id="2_q71t7"]
+[ext_resource type="PackedScene" uid="uid://dmymgqrmmyt22" path="res://Scenes/BuildingBlocks/GhostPlacementSlots.tscn" id="3_6f7nl"]
 [ext_resource type="Shape3D" uid="uid://b1e733t1wa7y5" path="res://Scenes/GridColliderGhostShape.tres" id="3_g4xhs"]
 [ext_resource type="Shape3D" uid="uid://hhwcvjhrhjju" path="res://Scenes/SocketShape.tres" id="4_4ynxo"]
 
@@ -177,9 +178,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6n4el")
 
-[node name="Cylinder" type="Node3D" node_paths=PackedStringArray("gridArea")]
+[node name="Cylinder" type="Node3D"]
 script = ExtResource("1_1mnjp")
-gridArea = NodePath("Placement")
 
 [node name="Node" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.059, 0.437, -0.115)
@@ -187,11 +187,9 @@ mesh = SubResource("ArrayMesh_m77px")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_q71t7")
 
-[node name="Placement" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 16
+[node name="GhostPlacementSlots" parent="." instance=ExtResource("3_6f7nl")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Placement"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GhostPlacementSlots"]
 shape = ExtResource("3_g4xhs")
 
 [node name="Output Socket" type="Area3D" parent="."]
