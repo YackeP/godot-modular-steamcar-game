@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://0m2moh6cq2lt"]
+[gd_scene load_steps=9 format=3 uid="uid://0m2moh6cq2lt"]
 
 [ext_resource type="Script" path="res://Scripts/Grid Objects/RocketEngine.gd" id="1_t38fj"]
 [ext_resource type="Texture2D" uid="uid://hswn5mq8cyr" path="res://Models/Space engine_SpaceEngine_BaseColor.png" id="2_vqgv4"]
 [ext_resource type="Shape3D" uid="uid://dfdse2c1n21jl" path="res://Scenes/GridColliderShape.tres" id="3_83guk"]
-[ext_resource type="Shape3D" uid="uid://hhwcvjhrhjju" path="res://Scenes/SocketShape.tres" id="4_78rnb"]
+[ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="4_rbtyt"]
+[ext_resource type="PackedScene" uid="uid://d5jcajdxl2oq" path="res://Scenes/BuildingBlocks/InputSocket.tscn" id="5_nnbbu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_12lbv"]
 resource_name = "SpaceEngine_mat"
@@ -61,12 +62,7 @@ shape = ExtResource("3_83guk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 shape = ExtResource("3_83guk")
 
-[node name="Input Socket" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
-collision_layer = 64
-collision_mask = 128
+[node name="DebugNode" parent="." instance=ExtResource("4_rbtyt")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Input Socket"]
-shape = ExtResource("4_78rnb")
-
-[connection signal="area_entered" from="Input Socket" to="." method="_on_input_socket_area_entered"]
+[node name="Input Socket" parent="." instance=ExtResource("5_nnbbu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00183344, -0.00180346, 1.4975)

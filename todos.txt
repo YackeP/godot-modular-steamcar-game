@@ -16,6 +16,19 @@
 - [x] Sockets, like "only 1 input socket at start, 1 output socket on right"
 	- special effect, or only allow to place stuff when on a socket
 	- can be achieved by a similar way like the NeighbourConter did -> Area3D per socket
+- [ ] Write down ideas for possible elements, add debug numbers to elements to show the power
+	- maybe have a global "DEBUG" flag somewhere 
+	  each node with stuff to debug would have a "Debug elements" node/scene which is only shown when this flag is enabled
+- [ ] Implement possible interactions between 2 set input-output combinations 
+- [ ] A flow of numbers and values towards the exit values via the interactions between the elements
+
+# down the line
+- [ ] Find or implement a simple driving model
+- [ ] Find a free map
+- [ ] Switch between placement and driving scenes
+- [ ] Have placement scene output numbers impact the diving characteristics
+
+# nice to have
 - [ ] UI for previewing the selected house
 - [ ] UI for selecting the houses  
 - [ ] Changing ghost color when placement is invalid

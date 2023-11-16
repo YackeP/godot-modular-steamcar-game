@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://cog3cpde01ww6"]
+
+[ext_resource type="Script" path="res://Scripts/Grid Objects/Windmill.gd" id="1_e4jfm"]
+[ext_resource type="PackedScene" uid="uid://dosb1cw0o40vy" path="res://Models/Windmill.glb" id="1_o0vqq"]
+[ext_resource type="Shape3D" uid="uid://dfdse2c1n21jl" path="res://Scenes/GridColliderShape.tres" id="2_iebmq"]
+[ext_resource type="PackedScene" uid="uid://d0hp2qe3egj44" path="res://Scenes/BuildingBlocks/OutputSocket.tscn" id="3_1b4lp"]
+[ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="4_s6xx0"]
+
+[node name="Windmill" type="StaticBody3D"]
+script = ExtResource("1_e4jfm")
+
+[node name="Windmill" parent="." instance=ExtResource("1_o0vqq")]
+transform = Transform3D(0.896976, 0, 0, 0, 0.896976, 0, 0, 0, 0.896976, 0, 0, -0.098049)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = ExtResource("2_iebmq")
+
+[node name="Output Socket" parent="." instance=ExtResource("3_1b4lp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="DebugNode" parent="." instance=ExtResource("4_s6xx0")]
+
+[node name="Label3D" type="Label3D" parent="DebugNode"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57138, -0.0871037)
+text = "Power gen: 10"

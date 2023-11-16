@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d5jcajdxl2oq"]
+
+[ext_resource type="Shape3D" uid="uid://hhwcvjhrhjju" path="res://Scenes/SocketShape.tres" id="1_l8bja"]
+
+[node name="Input Socket" type="Area3D"]
+collision_layer = 64
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = ExtResource("1_l8bja")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://brw0hpf5butfs"]
+
+[ext_resource type="PackedScene" uid="uid://dosb1cw0o40vy" path="res://Models/Windmill.glb" id="1_gmpqo"]
+[ext_resource type="Script" path="res://Scripts/PlacementGhost.gd" id="1_rrsbh"]
+[ext_resource type="Shape3D" uid="uid://dfdse2c1n21jl" path="res://Scenes/GridColliderShape.tres" id="2_ct53g"]
+[ext_resource type="Material" uid="uid://yunvghvdw2j3" path="res://Materials/HouseGhostMaterial.tres" id="3_84suv"]
+[ext_resource type="PackedScene" uid="uid://dmymgqrmmyt22" path="res://Scenes/BuildingBlocks/GhostPlacementSlots.tscn" id="4_5ptv7"]
+[ext_resource type="Shape3D" uid="uid://b1e733t1wa7y5" path="res://Scenes/GridColliderGhostShape.tres" id="5_p71kd"]
+
+[node name="Windmill" type="StaticBody3D"]
+script = ExtResource("1_rrsbh")
+
+[node name="Windmill" parent="." instance=ExtResource("1_gmpqo")]
+transform = Transform3D(0.896976, 0, 0, 0, 0.896976, 0, 0, 0, 0.896976, 0, 0, -0.098049)
+
+[node name="Windmill_SecondAge" parent="Windmill/RootNode" index="0"]
+surface_material_override/0 = ExtResource("3_84suv")
+surface_material_override/1 = ExtResource("3_84suv")
+surface_material_override/2 = ExtResource("3_84suv")
+surface_material_override/3 = ExtResource("3_84suv")
+surface_material_override/4 = ExtResource("3_84suv")
+surface_material_override/5 = ExtResource("3_84suv")
+surface_material_override/6 = ExtResource("3_84suv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = ExtResource("2_ct53g")
+
+[node name="GhostPlacementSlots" parent="." instance=ExtResource("4_5ptv7")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GhostPlacementSlots"]
+shape = ExtResource("5_p71kd")
+
+[editable path="Windmill"]

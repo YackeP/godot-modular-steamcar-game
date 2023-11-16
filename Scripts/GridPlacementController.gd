@@ -9,7 +9,8 @@ var placeableObjects: Array[PlaceableObjectDefinition] = [
 	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/House2.tscn"), preload("res://Scenes/PlacedObjectGhosts/House2Ghost.tscn")),
 	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/House4.tscn"), preload("res://Scenes/PlacedObjectGhosts/House4Ghost.tscn")),
 	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/FuelTank.tscn"),preload("res://Scenes/PlacedObjectGhosts/FuelTankGhost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/RocketEngine.tscn"),preload("res://Scenes/PlacedObjectGhosts/RocketEngineGhost.tscn"))
+	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/RocketEngine.tscn"),preload("res://Scenes/PlacedObjectGhosts/RocketEngineGhost.tscn")),
+	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/Windmill.tscn"),preload("res://Scenes/PlacedObjectGhosts/WindmillGhost.tscn"))
 ]
 
 var selectedPlaceable: PlaceableObjectDefinition
