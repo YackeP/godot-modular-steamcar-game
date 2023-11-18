@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dxwku72s2a68y"
-path="res://.godot/imported/Cylo_Short.glb-7a292c63f61a58a3469a527edf6bfba7.scn"
+path="res://.godot/imported/cylo_Short.glb-ad0b2c610a4dee64d7d02bc9cf56f08b.scn"
 
 [deps]
 
-source_file="res://Models/PipeWorksPack/Meshes/Cylo_Short.glb"
-dest_files=["res://.godot/imported/Cylo_Short.glb-7a292c63f61a58a3469a527edf6bfba7.scn"]
+source_file="res://Models/PipeWorksPack/Meshes/cylo_Short.glb"
+dest_files=["res://.godot/imported/cylo_Short.glb-ad0b2c610a4dee64d7d02bc9cf56f08b.scn"]
 
 [params]
 
