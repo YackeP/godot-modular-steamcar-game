@@ -4,3 +4,8 @@
 
 [node name="DebugNode" type="Node3D"]
 script = ExtResource("1_hdic6")
+
+[node name="Text" type="Label3D" parent="."]
+billboard = 1
+text = "DebugText"
+vertical_alignment = 0
