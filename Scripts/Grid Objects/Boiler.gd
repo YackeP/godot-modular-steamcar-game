@@ -28,7 +28,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# for now, let's assume 1-1 heat-steam transfer ratio
 	var heatTransferedToSteam = min(heat, heatToSteamTransferSpeed * delta)
-	var steamProduced = min(steamCapacity, steam + heatTransferedToSteam)
+	var steamProduced = heatTransferedToSteam
 	heat = heat - heatTransferedToSteam
 	steam = min(steam + steamProduced, steamCapacity)
 
