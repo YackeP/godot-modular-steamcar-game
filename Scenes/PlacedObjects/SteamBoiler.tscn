@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bai48k6kpynuh"]
+
+[ext_resource type="PackedScene" uid="uid://3aenfxjethb7" path="res://Models/PipeWorksPack/Meshes/cylo_tall.glb" id="1_4l6jb"]
+[ext_resource type="Script" path="res://Scripts/Grid Objects/Boiler.gd" id="1_4tibu"]
+[ext_resource type="Shape3D" uid="uid://dfdse2c1n21jl" path="res://Scenes/GridColliderShape.tres" id="2_imlft"]
+[ext_resource type="PackedScene" uid="uid://d5jcajdxl2oq" path="res://Scenes/BuildingBlocks/InputSocket.tscn" id="3_bdcx4"]
+[ext_resource type="PackedScene" uid="uid://d0hp2qe3egj44" path="res://Scenes/BuildingBlocks/OutputSocket.tscn" id="4_12q4f"]
+[ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="6_g3pkd"]
+
+[node name="SteamBoiler" type="StaticBody3D"]
+script = ExtResource("1_4tibu")
+steamCapacity = 5.0
+heatCapacity = 2.0
+heatToSteamTransferSpeed = 0.33
+
+[node name="cylo_tall" parent="." instance=ExtResource("1_4l6jb")]
+transform = Transform3D(0.18, 0, 0, 0, -7.86805e-09, -0.18, 0, 0.18, -7.86805e-09, 0, 0.448117, -1.23634)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = ExtResource("2_imlft")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = ExtResource("2_imlft")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+shape = ExtResource("2_imlft")
+
+[node name="Input Socket" parent="." instance=ExtResource("3_bdcx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.549758, 0, 0)
+connectableResourceTypes = Array[int]([0])
+
+[node name="Input Socket2" parent="." instance=ExtResource("3_bdcx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+connectableResourceTypes = Array[int]([0])
+
+[node name="Output Socket" parent="." instance=ExtResource("4_12q4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[node name="DebugNode" parent="." instance=ExtResource("6_g3pkd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27983, 0)

@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0hp2qe3egj44"]
+[gd_scene load_steps=3 format=3 uid="uid://d0hp2qe3egj44"]
 
 [ext_resource type="Shape3D" uid="uid://hhwcvjhrhjju" path="res://Scenes/SocketShape.tres" id="1_j8ctg"]
+[ext_resource type="Script" path="res://Scripts/OutputSocket.gd" id="1_vvxyw"]
 
 [node name="Output Socket" type="Area3D"]
 collision_layer = 128
 collision_mask = 64
+script = ExtResource("1_vvxyw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = ExtResource("1_j8ctg")

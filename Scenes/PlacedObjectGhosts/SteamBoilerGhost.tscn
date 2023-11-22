@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://g7l3nk1x8500"]
+
+[ext_resource type="Script" path="res://Scripts/PlacementGhost.gd" id="1_aftec"]
+[ext_resource type="PackedScene" uid="uid://3aenfxjethb7" path="res://Models/PipeWorksPack/Meshes/cylo_tall.glb" id="1_titf6"]
+[ext_resource type="Shape3D" uid="uid://dfdse2c1n21jl" path="res://Scenes/GridColliderShape.tres" id="2_k1ufp"]
+[ext_resource type="PackedScene" uid="uid://dmymgqrmmyt22" path="res://Scenes/BuildingBlocks/GhostPlacementSlots.tscn" id="2_n7xwq"]
+
+[node name="SteamBoiler" type="Node3D"]
+script = ExtResource("1_aftec")
+
+[node name="cylo_tall" parent="." instance=ExtResource("1_titf6")]
+transform = Transform3D(0.18, 0, 0, 0, -7.86805e-09, -0.18, 0, 0.18, -7.86805e-09, 0, 0.448, -1.236)
+
+[node name="GhostPlacementSlots" parent="." instance=ExtResource("2_n7xwq")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GhostPlacementSlots"]
+shape = ExtResource("2_k1ufp")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="GhostPlacementSlots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = ExtResource("2_k1ufp")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="GhostPlacementSlots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+shape = ExtResource("2_k1ufp")

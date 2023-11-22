@@ -7,10 +7,10 @@ var textValueGetters: Array[Callable]
 @onready var textLabel = $Text as Label3D
 
 func _enter_tree():
-	var debugSettings: DebugSettings = get_node("/root/DebugSettings")
+	# FIXME: the node name can't be the same as the autoloaded node, as it would cause name collisions
+	var debugSettings: DebugSettings = get_node("/root/DebugSettingsNode") 
 	if !debugSettings.SHOW_DEBUG_NODES:
 		hide()
-
 
 func addTextValueGetter(getter: Callable) -> void:
 	textValueGetters.append(getter)
