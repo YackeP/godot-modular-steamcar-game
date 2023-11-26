@@ -5,14 +5,11 @@ class_name GridPlacementController
 const gridSlotLayerMask := 0b00000000_00000000_00000000_00010000 # layer 5
 
 var placeableObjects: Array[PlaceableObjectDefinition] = [
-	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/House1.tscn"),preload("res://Scenes/PlacedObjectGhosts/House1Ghost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/House2.tscn"), preload("res://Scenes/PlacedObjectGhosts/House2Ghost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/House4.tscn"), preload("res://Scenes/PlacedObjectGhosts/House4Ghost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/FuelTank.tscn"),preload("res://Scenes/PlacedObjectGhosts/FuelTankGhost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/RocketEngine.tscn"),preload("res://Scenes/PlacedObjectGhosts/RocketEngineGhost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/Windmill.tscn"),preload("res://Scenes/PlacedObjectGhosts/WindmillGhost.tscn")),
+	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/CoalFurnace.tscn"),preload("res://Scenes/PlacedObjectGhosts/CoalFurnaceGhost.tscn")),
 	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/SteamBoiler.tscn"),preload("res://Scenes/PlacedObjectGhosts/SteamBoilerGhost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/CoalFurnace.tscn"),preload("res://Scenes/PlacedObjectGhosts/CoalFurnaceGhost.tscn"))
+	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/SteamPiston.tscn"),preload("res://Scenes/PlacedObjectGhosts/SteamPistonGhost.tscn")),
+	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/FuelTank.tscn"),preload("res://Scenes/PlacedObjectGhosts/FuelTankGhost.tscn")),
+	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/RocketEngine.tscn"),preload("res://Scenes/PlacedObjectGhosts/RocketEngineGhost.tscn"))
 ]
 
 var selectedPlaceable: PlaceableObjectDefinition
@@ -20,6 +17,10 @@ var selectedPlaceable: PlaceableObjectDefinition
 var houseGhost: PlacementGhost
 
 const ray_length = 1000
+
+#func _init() -> void:
+#	Logger.set_default_output_level(1) # debugging, need to set this more properly
+# this also doesn't actually work
 
 func _physics_process(delta) -> void:
 	if selectedPlaceable != null:

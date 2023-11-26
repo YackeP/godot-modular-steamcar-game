@@ -13,7 +13,7 @@ script = ExtResource("1_r2yk8")
 transform = Transform3D(-0.384743, 0.851667, -0.35586, -0.492764, 0.136481, 0.859393, 0.780485, 0.506, 0.367161, -2.74391, 1.63777, 6.85233)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.319753, 0.644393, -0.694634, -0.121772, 0.75499, 0.64433, 0.939643, -0.12144, 0.319879, -2.35727, 3.36402, 0.9387)
+transform = Transform3D(0.319753, 0.644393, -0.694633, -0.121772, 0.75499, 0.64433, 0.939643, -0.12144, 0.319879, -3.49434, 3.36402, 2.20958)
 projection = 1
 current = true
 size = 5.61
@@ -45,6 +45,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="GridSpace15" parent="GridMap" instance=ExtResource("2_jqtlm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="GridSpace16" parent="GridMap" node_paths=PackedStringArray("collider") instance=ExtResource("2_jqtlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+collider = NodePath("../GridSpace11/GridCollisionShape3D")
+
+[node name="GridSpace17" parent="GridMap" node_paths=PackedStringArray("collider") instance=ExtResource("2_jqtlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 1)
+collider = NodePath("../GridSpace13/GridCollisionShape3D")
+
+[node name="GridSpace4" parent="GridMap" node_paths=PackedStringArray("collider") instance=ExtResource("2_jqtlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+collider = NodePath("../GridSpace2/GridCollisionShape3D")
+
+[node name="GridSpace19" parent="GridMap" node_paths=PackedStringArray("collider") instance=ExtResource("2_jqtlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+collider = NodePath("../GridSpace12/GridCollisionShape3D")
+
+[node name="GridSpace20" parent="GridMap" node_paths=PackedStringArray("collider") instance=ExtResource("2_jqtlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
+collider = NodePath("../GridSpace13/GridCollisionShape3D")
+
+[node name="GridSpace21" parent="GridMap" node_paths=PackedStringArray("collider") instance=ExtResource("2_jqtlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+collider = NodePath("../GridSpace13/GridCollisionShape3D")
+
+[node name="GridSpace18" parent="GridMap" node_paths=PackedStringArray("collider") instance=ExtResource("2_jqtlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -1)
+collider = NodePath("../GridSpace15/GridCollisionShape3D")
 
 [node name="WallInputSocket" parent="GridMap" instance=ExtResource("3_p4qu7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)

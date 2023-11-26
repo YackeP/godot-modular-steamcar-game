@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0hp2qe3egj44"]
+[gd_scene load_steps=4 format=3 uid="uid://d0hp2qe3egj44"]
 
 [ext_resource type="Shape3D" uid="uid://hhwcvjhrhjju" path="res://Scenes/SocketShape.tres" id="1_j8ctg"]
 [ext_resource type="Script" path="res://Scripts/OutputSocket.gd" id="1_vvxyw"]
+[ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="3_uvrlm"]
 
 [node name="Output Socket" type="Area3D"]
 collision_layer = 128
@@ -10,3 +11,6 @@ script = ExtResource("1_vvxyw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = ExtResource("1_j8ctg")
+
+[node name="DebugNode" parent="." instance=ExtResource("3_uvrlm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.687301, 0)

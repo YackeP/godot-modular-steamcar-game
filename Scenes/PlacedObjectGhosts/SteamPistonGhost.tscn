@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://djnhf30ojs5ae"]
+
+[ext_resource type="Script" path="res://Scripts/PlacementGhost.gd" id="1_b7ikb"]
+[ext_resource type="PackedScene" uid="uid://dmymgqrmmyt22" path="res://Scenes/BuildingBlocks/GhostPlacementSlots.tscn" id="4_k0ghs"]
+[ext_resource type="Shape3D" uid="uid://b1e733t1wa7y5" path="res://Scenes/GridColliderGhostShape.tres" id="5_5fl63"]
+
+[node name="SteamPistonGhost" type="Node3D"]
+script = ExtResource("1_b7ikb")
+
+[node name="Shape" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Shape"]
+transform = Transform3D(0.61, 0, 0, 0, 0.45, 0, 0, 0, 0.61, 0, 0.455969, 0.0269359)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Shape"]
+transform = Transform3D(0.1, 0, 0, 0, 0.0116076, -0.0999804, 0, -0.585885, -0.00198082, 0, 0.455969, 0.654277)
+height = 1.48669
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Shape"]
+transform = Transform3D(-1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 0, 0, 0.3, 0.104649, 0.359186, 1.04027)
+
+[node name="GhostPlacementSlots" parent="." instance=ExtResource("4_k0ghs")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GhostPlacementSlots"]
+shape = ExtResource("5_5fl63")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="GhostPlacementSlots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+shape = ExtResource("5_5fl63")

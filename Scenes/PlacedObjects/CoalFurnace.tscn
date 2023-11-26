@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="4_1ljr4"]
 [ext_resource type="PackedScene" uid="uid://d0hp2qe3egj44" path="res://Scenes/BuildingBlocks/OutputSocket.tscn" id="4_u16de"]
 
-[node name="CoalFurnace" type="StaticBody3D" node_paths=PackedStringArray("outputSocket")]
+[node name="CoalFurnace" type="StaticBody3D" node_paths=PackedStringArray("outputSockets")]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_0p6ty")
 heatCapacity = 10.0
-outputSocket = NodePath("Output Socket")
+outputSockets = [NodePath("Output Socket"), NodePath("Output Socket2"), NodePath("Output Socket3"), NodePath("Output Socket4")]
 
 [node name="Steamer" parent="." instance=ExtResource("1_hkdel")]
 
@@ -23,12 +23,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.923674, 0)
 
 [node name="Output Socket" parent="." instance=ExtResource("4_u16de")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.500488, 0, 0)
+outputType = 1
 
 [node name="Output Socket2" parent="." instance=ExtResource("4_u16de")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+outputType = 1
 
 [node name="Output Socket3" parent="." instance=ExtResource("4_u16de")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+outputType = 1
 
 [node name="Output Socket4" parent="." instance=ExtResource("4_u16de")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+outputType = 1

@@ -6,6 +6,8 @@ class_name SteamBoiler
 @export var heatCapacity: float
 @export var heatToSteamTransferSpeed: float
 
+@export var outputSocket: OutputSocket
+
 var steam: float = 0.0
 ## updated from the inputSlot
 var heat: float = 0.0
@@ -31,6 +33,7 @@ func _physics_process(delta: float) -> void:
 	var steamProduced = heatTransferedToSteam
 	heat = heat - heatTransferedToSteam
 	steam = min(steam + steamProduced, steamCapacity)
+	steam = max(0, steam - outputSocket.sendResourcesToConnectedInputSocket(steam))
 
 ## This returns the number of accepted resources
 func receiveResources(heatInflow: float) -> float:

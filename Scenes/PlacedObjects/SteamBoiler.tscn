@@ -7,11 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://d0hp2qe3egj44" path="res://Scenes/BuildingBlocks/OutputSocket.tscn" id="4_12q4f"]
 [ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="6_g3pkd"]
 
-[node name="SteamBoiler" type="StaticBody3D"]
+[node name="SteamBoiler" type="StaticBody3D" node_paths=PackedStringArray("outputSocket")]
 script = ExtResource("1_4tibu")
 steamCapacity = 5.0
 heatCapacity = 2.0
 heatToSteamTransferSpeed = 0.33
+outputSocket = NodePath("Output Socket")
 
 [node name="cylo_tall" parent="." instance=ExtResource("1_4l6jb")]
 transform = Transform3D(0.18, 0, 0, 0, -7.86805e-09, -0.18, 0, 0.18, -7.86805e-09, 0, 0.448117, -1.23634)
@@ -29,14 +30,19 @@ shape = ExtResource("2_imlft")
 
 [node name="Input Socket" parent="." instance=ExtResource("3_bdcx4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.549758, 0, 0)
-connectableResourceTypes = Array[int]([0])
+connectableResourceTypes = Array[int]([1])
+
+[node name="Input Socket3" parent="." instance=ExtResource("3_bdcx4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+connectableResourceTypes = Array[int]([1])
 
 [node name="Input Socket2" parent="." instance=ExtResource("3_bdcx4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
-connectableResourceTypes = Array[int]([0])
+connectableResourceTypes = Array[int]([1])
 
 [node name="Output Socket" parent="." instance=ExtResource("4_12q4f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+outputType = 2
 
 [node name="DebugNode" parent="." instance=ExtResource("6_g3pkd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27983, 0)

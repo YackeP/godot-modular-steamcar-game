@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ceutc06ahdbxi"]
+[gd_scene load_steps=8 format=3 uid="uid://ceutc06ahdbxi"]
 
-[ext_resource type="Shape3D" uid="uid://hhwcvjhrhjju" path="res://Scenes/SocketShape.tres" id="1_1oowf"]
 [ext_resource type="Script" path="res://Scripts/WallInputSocket.gd" id="1_sr8h6"]
 [ext_resource type="Texture2D" uid="uid://do2wrlhp6xg3w" path="res://Textures/Soapstone01_MR_1K/Soapstone01_1K_BaseColor.png" id="2_1kdw4"]
+[ext_resource type="PackedScene" uid="uid://d5jcajdxl2oq" path="res://Scenes/BuildingBlocks/InputSocket.tscn" id="3_devfd"]
+[ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="4_yuort"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0nb4t"]
 albedo_texture = ExtResource("2_1kdw4")
@@ -35,12 +36,9 @@ material = SubResource("StandardMaterial3D_t02rt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.259224, 0.247883)
 shape = SubResource("BoxShape3D_rjmgl")
 
-[node name="Input Socket" type="Area3D" parent="."]
+[node name="Input Socket" parent="." instance=ExtResource("3_devfd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-collision_layer = 0
-collision_mask = 128
+connectableResourceTypes = Array[int]([3])
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Input Socket"]
-shape = ExtResource("1_1oowf")
-
-[connection signal="area_entered" from="Input Socket" to="." method="_on_input_socket_area_entered"]
+[node name="DebugNode" parent="." instance=ExtResource("4_yuort")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96556, 0)

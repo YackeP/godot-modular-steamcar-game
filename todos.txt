@@ -16,17 +16,27 @@
 - [x] Sockets, like "only 1 input socket at start, 1 output socket on right"
 	- special effect, or only allow to place stuff when on a socket
 	- can be achieved by a similar way like the NeighbourConter did -> Area3D per socket
-- [ ] Write down ideas for possible elements, add debug numbers to elements to show the power
+- [ ] Write down ideas for possible elements
+- [x] add debug numbers to grid elements to show the power
 	- maybe have a global "DEBUG" flag somewhere 
 	  each node with stuff to debug would have a "Debug elements" node/scene which is only shown when this flag is enabled
-- [ ] Implement possible interactions between 2 set input-output combinations 
-- [ ] A flow of numbers and values towards the exit values via the interactions between the elements
+- [x] Implement possible interactions between 2 set input-output combinations (only output heat, produce heat) 
+- [x] A flow of numbers and values towards the exit values via the interactions between the elements
+- [x] Add components for a full furnace -> boiler -> piston -> engine (wheel) output
+- [ ] Add an option to delete placed objects and re-enable the spots to be taken by other objects
+	- This could be implemented by passing a reference to spots taken while the object is being created
+		- or, passing a method (lambda with parameters filled in) that will free these spots, so that only gridMangager will need to know how to free the space
+
+
+# small tweaks and TODOs:
+- [ ] Refactor the PlacedObjects from StaticBody3D to Node3D with a child Collider, so that they can have a consistent collider object
 
 # down the line
 - [ ] Find or implement a simple driving model
-- [ ] Find a free map
+- [ ] Find a free map for driving a car
 - [ ] Switch between placement and driving scenes
-- [ ] Have placement scene output numbers impact the diving characteristics
+- [ ] Expose the driving parameters to some changeable variables
+- [ ] Have placement scene output numbers impact the diving characteristics 
 
 # nice to have
 - [ ] UI for previewing the selected house
