@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://csk3xje56hlfk"]
+
+[ext_resource type="Script" path="res://Scripts/ResourceBuffer.gd" id="1_r7v78"]
+[ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="2_kg60t"]
+
+[node name="ResourceBuffer" type="Node3D"]
+script = ExtResource("1_r7v78")
+
+[node name="DebugNode" parent="." instance=ExtResource("2_kg60t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -22,7 +22,9 @@ var parentGridComponent: GridComponent
 func _ready() -> void:
 # shared between the 2 sockets
 	assert(outputType != SteamEngineTypes.SteamEngineResourceType.UNDEFINED, "Output socket must have an output type defined")
+	
 	area_entered.connect(tryConnectSocket) # area_entered - Area3D signal when another area intersects it's collision area\
+	
 	if $DebugNode != null:
 		var debugNode: DebugNode = $DebugNode
 		debugNode.addTextValueGetter(func():return "x" if connectedInputSocket != null else "" )
