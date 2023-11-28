@@ -22,13 +22,13 @@ func _ready() -> void:
 func receiveResources(resourceInflow: float) -> float:
 	var overflow = max(0,(resourceCount + resourceInflow) - _resourceCapacity)
 	# repeated line -> can put the max(...) into the setter, need to confirm that setters are called when a new value is assigned
-	resourceCount = min(resourceCount + resourceInflow, _resourceCapacity)
+	resourceCount = resourceCount + resourceInflow
 	return resourceInflow - overflow
 
 
 ## called by the main component script
 func updateResources(newCount: float) -> void:
-	resourceCount = min(newCount, _resourceCapacity)
+	resourceCount = newCount
 	pass
 
 
