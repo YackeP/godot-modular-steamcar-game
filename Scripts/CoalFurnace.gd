@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 #	resourceBuffer.receiveResources(heatGeneratedPerSecond * delta)
 	var overflow = resourceBuffer.receiveResources(heatGeneratedPerSecond * delta)
 	# filter to connected outputSockets only
-	for socket in outputSockets:
+	for socket in outputSockets.filter(func(s): return s.isConnected()):
 		# this should preferably be done in just 1 line with 1 reference to the resourceBuffer
 		var heatAcceptedByOutput = socket.sendResourcesToConnectedInputSocket(resourceBuffer.resourceCount + overflow)
 		resourceBuffer.updateResources(resourceBuffer.resourceCount - heatAcceptedByOutput)

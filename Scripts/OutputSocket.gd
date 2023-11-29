@@ -51,6 +51,9 @@ func connectedSocketContainsCompatibleResourceType(socket: InputSocket) -> bool:
 			return true
 	return false
 
+func isConnected() -> bool:
+	return connectedInputSocket != null
+
 # shared between the 2 sockets
 func sendMessageToParent() -> void:
 	pass
@@ -59,7 +62,7 @@ func sendMessageToParent() -> void:
 func getConnectedComponentType() -> String:
 	return parentGridComponent.get_class()
 	
-## this will return the value taken by the input
+## this will return the value accepted by the input
 func sendResourcesToConnectedInputSocket(fullResource: float) -> float:
 	if connectedInputSocket == null:
 		Logger.debug("OutputSocket not connected to InputSocket, can't send resources!")

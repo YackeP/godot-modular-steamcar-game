@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bai48k6kpynuh"]
+[gd_scene load_steps=8 format=3 uid="uid://bai48k6kpynuh"]
 
 [ext_resource type="PackedScene" uid="uid://3aenfxjethb7" path="res://Models/PipeWorksPack/Meshes/cylo_tall.glb" id="1_4l6jb"]
 [ext_resource type="Script" path="res://Scripts/Grid Objects/Boiler.gd" id="1_4tibu"]
@@ -6,13 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://d5jcajdxl2oq" path="res://Scenes/BuildingBlocks/InputSocket.tscn" id="3_bdcx4"]
 [ext_resource type="PackedScene" uid="uid://d0hp2qe3egj44" path="res://Scenes/BuildingBlocks/OutputSocket.tscn" id="4_12q4f"]
 [ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="6_g3pkd"]
+[ext_resource type="PackedScene" uid="uid://csk3xje56hlfk" path="res://Scenes/BuildingBlocks/ResourceBuffer.tscn" id="7_8vruk"]
 
-[node name="SteamBoiler" type="StaticBody3D" node_paths=PackedStringArray("outputSocket")]
+[node name="SteamBoiler" type="StaticBody3D" node_paths=PackedStringArray("outputSocket", "heatBuffer", "steamBuffer")]
 script = ExtResource("1_4tibu")
-steamCapacity = 5.0
-heatCapacity = 2.0
-heatToSteamTransferSpeed = 0.33
+heatToSteamTransferRatio = 0.9
+heatConsumptionSpeed = 0.9
 outputSocket = NodePath("Output Socket")
+heatBuffer = NodePath("HeatBuffer")
+steamBuffer = NodePath("SteamBuffer")
 
 [node name="cylo_tall" parent="." instance=ExtResource("1_4l6jb")]
 transform = Transform3D(0.18, 0, 0, 0, -7.86805e-09, -0.18, 0, 0.18, -7.86805e-09, 0, 0.448117, -1.23634)
@@ -46,3 +48,13 @@ outputType = 2
 
 [node name="DebugNode" parent="." instance=ExtResource("6_g3pkd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27983, 0)
+
+[node name="HeatBuffer" parent="." instance=ExtResource("7_8vruk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28048, 0.821798)
+_resourceType = 1
+_resourceCapacity = 5.0
+
+[node name="SteamBuffer" parent="." instance=ExtResource("7_8vruk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19194, -0.600423)
+_resourceType = 2
+_resourceCapacity = 5.0

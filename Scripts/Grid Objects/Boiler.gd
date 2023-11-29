@@ -2,47 +2,27 @@ extends StaticBody3D
 
 class_name SteamBoiler
 
-@export var steamCapacity: float
-@export var heatCapacity: float
-@export var heatToSteamTransferSpeed: float
+@export var heatToSteamTransferRatio: float = 1.0
+@export var heatConsumptionSpeed: float = 1.0 # speed per second
 
 @export var outputSocket: OutputSocket
 
-var steam: float = 0.0
-## updated from the inputSlot
-var heat: float = 0.0
+@export var heatBuffer: ResourceBuffer
+@export var steamBuffer: ResourceBuffer
 
-func _ready() -> void:
-	if $DebugNode != null:
-		var debugNode: DebugNode = $DebugNode
-		debugNode.addTextValueGetter(func():return "Heat:%.2f" % heat + "/%.2f" % heatCapacity)
-		debugNode.addTextValueGetter(func():return "Steam:%.2f" % steam + "/%.2f" % steamCapacity)
-
-# need to figur out how to make this universal 
-# or this might not be a good fit to be universal as well
-# ResourceProducer might be a good fit for this sort of method
-#func inputSocketConnected_impl(startHeatInputRate: float) -> void:
-#	heatInputRate = startHeatInputRate
-#
-#func inputSocketUpdated(newHeatInputRate: float) -> void:
-#	heatInputRate = newHeatInputRate
 
 func _physics_process(delta: float) -> void:
-	# for now, let's assume 1-1 heat-steam transfer ratio
-	var heatTransferedToSteam = min(heat, heatToSteamTransferSpeed * delta)
-	var steamProduced = heatTransferedToSteam
-	heat = heat - heatTransferedToSteam
-	steam = min(steam + steamProduced, steamCapacity)
-	steam = max(0, steam - outputSocket.sendResourcesToConnectedInputSocket(steam))
+	# for now, let's assume 1-1 heat-steam transfer ratio	var heatTransferedToSteam = min(heat, heatToSteamTransferSpeed * delta)
+	var maxHeatConsumed = heatConsumptionSpeed * delta
+	var possibleHeatConsumed = min(maxHeatConsumed, heatBuffer.resourceCount)
+	
+	var steamProduced = possibleHeatConsumed * heatToSteamTransferRatio
+	var refusedSteam = steamProduced - steamBuffer.receiveResources(steamProduced)
+	var refusedHeat = refusedSteam / heatToSteamTransferRatio
+	
+	heatBuffer.updateResources(heatBuffer.resourceCount - possibleHeatConsumed + refusedHeat) # FIXME: this can be just 1 method	
+	steamBuffer.updateResources(steamBuffer.resourceCount - outputSocket.sendResourcesToConnectedInputSocket(steamBuffer.resourceCount))
 
 ## This returns the number of accepted resources
 func receiveResources(heatInflow: float) -> float:
-	var overflow = max(0,(heat + heatInflow) - heatCapacity)
-	heat = min(heat + heatInflow, heatCapacity)
-	return heatInflow - overflow
-
-func getHeat() -> float:
-	return heat
-	
-func getSteam() -> float:
-	return steam
+	return heatBuffer.receiveResources(heatInflow)

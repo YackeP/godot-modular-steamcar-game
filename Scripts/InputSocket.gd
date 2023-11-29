@@ -6,6 +6,7 @@ class_name InputSocket
 @export var connectableResourceTypes: Array[SteamEngineTypes.SteamEngineResourceType]
 
 var connectedOutputSocket: OutputSocket
+var resourceBuffer: ResourceBuffer
 # shared between the 2 sockets
 var parentGridComponent: StaticBody3D # scuffed
 
