@@ -8,13 +8,13 @@ const SOCKET_FILLED_MATERIAL = preload("res://Textures/WallInputSocketOverrideCo
 @onready var mesh: CSGBox3D = get_node("CSGBox3D4")
 @onready var inputSocket: Area3D = get_node("Input Socket")
 
-@export var power: float = 0.0
+var power: float = 0.0
 
 func _ready() -> void:
 	if $DebugNode != null:
 		var debugNode: DebugNode = $DebugNode
-		debugNode.addTextValueGetter(func():return "Power:%.2f" % power)
+		debugNode.addTextValueGetter(func():return "Power:%.2f" % (power * 100))
 
 func receiveResources(powerInflow: float) -> float:
-	power += powerInflow
-	return 0.0
+	power = powerInflow
+	return powerInflow

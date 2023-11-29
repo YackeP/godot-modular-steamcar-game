@@ -1,18 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddh4ckbmx18ks"]
+[gd_scene load_steps=7 format=3 uid="uid://ddh4ckbmx18ks"]
 
 [ext_resource type="PackedScene" uid="uid://d5jcajdxl2oq" path="res://Scenes/BuildingBlocks/InputSocket.tscn" id="1_wehf2"]
 [ext_resource type="Script" path="res://Scripts/Grid Objects/SteamPiston.gd" id="1_wesu7"]
 [ext_resource type="PackedScene" uid="uid://d0hp2qe3egj44" path="res://Scenes/BuildingBlocks/OutputSocket.tscn" id="2_7urgt"]
 [ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="4_47vqu"]
+[ext_resource type="PackedScene" uid="uid://csk3xje56hlfk" path="res://Scenes/BuildingBlocks/ResourceBuffer.tscn" id="5_3jsbc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7bupd"]
 
-[node name="SteamPiston" type="StaticBody3D" node_paths=PackedStringArray("outputSocket")]
+[node name="SteamPiston" type="StaticBody3D" node_paths=PackedStringArray("outputSocket", "steamBuffer")]
 script = ExtResource("1_wesu7")
 steamCapacity = 1.0
-steamToPowerTransferSpeed = 1.0
-steamReceiveLimit = 0.25
+steamToPowerTransferRatio = 0.9
+steamConsumptionSpeed = 0.9
 outputSocket = NodePath("Output Socket")
+steamBuffer = NodePath("SteamBuffer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500144, 0)
@@ -52,3 +54,8 @@ outputType = 3
 
 [node name="DebugNode" parent="." instance=ExtResource("4_47vqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34037, 0)
+
+[node name="SteamBuffer" parent="." instance=ExtResource("5_3jsbc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12802, 0.542177)
+_resourceType = 2
+_resourceCapacity = 1.0
