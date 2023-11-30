@@ -3,21 +3,12 @@ extends Area3D
 class_name OutputSocket
 
 # WARNING: all the OutputSockets need to be referenced by grid objects
-# TODO: assert that all the children OutputSockets are referenced
-# this should be done only once per instance, and not every time the object is instantiated?
+# 	TODO: assert that all the grid object's child OutputSockets are referenced
+# 	could this be done only once per instance, and not every time the object is instantiated?
 
-# should an output socket have multiple possible outputs, or only one?
-#@export var connectables: Array[SteamEngineTypes.SteamEngineResourceType]
 @export var outputType: SteamEngineTypes.SteamEngineResourceType
 
 var connectedInputSocket: InputSocket
-
-
-# shared between the 2 sockets
-# should the OutputSocket know about the GridComponent? 
-# Maybe it should just receive the info, and pass it through?
-# because InputSocket should defo know about the GridComponent
-var parentGridComponent: GridComponent
 
 func _ready() -> void:
 # shared between the 2 sockets
@@ -29,42 +20,29 @@ func _ready() -> void:
 		var debugNode: DebugNode = $DebugNode
 		debugNode.addTextValueGetter(func():return "x" if connectedInputSocket != null else "" )
 
-# shared between the 2 sockets
+# a lot of code is shared between the 2 sockets
 func tryConnectSocket(area: Area3D) -> void:
 	if not area is InputSocket:
-		# these should be debug instead of info, but idk how to set it
+		# these should be debug instead of info, but idk how to set it so that these logs are displayed
 		Logger.info("OutputSocket of " + get_parent_node_3d().name + " tryToConnectSocket: failed")
 		return
 	var socket = area as InputSocket
-	if connectedSocketContainsCompatibleResourceType(socket):
+	if inputSocketContainsCompatibleResourceType(socket):
 		connectedInputSocket = socket
 		Logger.info("OutputSocket of " + get_parent_node_3d().name + " tryToConnectSocket: success")
 	else: # this else is here just for debuggin purposes
 		Logger.info("OutputSocket of " + get_parent_node_3d().name + " tryToConnectSocket: failed")
-		
-		
 
-# shared between the 2 sockets
-func connectedSocketContainsCompatibleResourceType(socket: InputSocket) -> bool:
-	for resourceType in socket.connectableResourceTypes:
-		if resourceType == outputType:
-			return true
-	return false
-
-func isConnected() -> bool:
+func isConnected():
 	return connectedInputSocket != null
 
-# shared between the 2 sockets
-func sendMessageToParent() -> void:
-	pass
+# shared between the 2 sockets, if the socket parameter is a superclass
+func inputSocketContainsCompatibleResourceType(socket: InputSocket) -> bool:
+	return outputType == socket.getInputType()
 
-# shared between the 2 sockets
-func getConnectedComponentType() -> String:
-	return parentGridComponent.get_class()
-	
 ## this will return the value accepted by the input
 func sendResourcesToConnectedInputSocket(fullResource: float) -> float:
 	if connectedInputSocket == null:
 		Logger.debug("OutputSocket not connected to InputSocket, can't send resources!")
 		return 0
-	return connectedInputSocket.sendResourcesToConnectedGridComponent(fullResource)
+	return connectedInputSocket.sendResourcesToConnectedResourceBuffer(fullResource)

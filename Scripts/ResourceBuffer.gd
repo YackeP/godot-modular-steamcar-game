@@ -3,7 +3,7 @@ extends Node3D
 class_name ResourceBuffer
 
 # the type of resource  might be irrelevant, maybe? 
-@export var _resourceType: SteamEngineTypes.SteamEngineResourceType
+@export var resourceType: SteamEngineTypes.SteamEngineResourceType
 @export var _resourceCapacity: float = 10.0
 
 var resourceCount: float:
@@ -15,7 +15,7 @@ var resourceCount: float:
 func _ready() -> void:
 	if $DebugNode != null:
 		var debugNode: DebugNode = $DebugNode
-		debugNode.addTextValueGetter(func():return "%s:%.2f" % [SteamEngineTypes.SteamEngineResourceType.keys()[_resourceType], resourceCount] + "/%.2f" % _resourceCapacity)
+		debugNode.addTextValueGetter(func():return "%s:%.2f" % [SteamEngineTypes.SteamEngineResourceType.keys()[resourceType], resourceCount] + "/%.2f" % _resourceCapacity)
 
 
 ## this will return the value accepted by the buffer

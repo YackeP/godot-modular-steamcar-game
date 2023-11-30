@@ -40,4 +40,4 @@ outputType = 1
 
 [node name="ResourceBuffer" parent="." instance=ExtResource("6_cf4iw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-_resourceType = 1
+resourceType = 1
