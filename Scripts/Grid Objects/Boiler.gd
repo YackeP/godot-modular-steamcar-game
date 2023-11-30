@@ -17,12 +17,12 @@ func _physics_process(delta: float) -> void:
 	var possibleHeatConsumed = min(maxHeatConsumed, heatBuffer.resourceCount)
 	
 	var steamProduced = possibleHeatConsumed * heatToSteamTransferRatio
-	var refusedSteam = steamProduced - steamBuffer.receiveResources(steamProduced)
+	var refusedSteam = steamProduced - steamBuffer.increaseResources(steamProduced)
 	var refusedHeat = refusedSteam / heatToSteamTransferRatio
 	
-	heatBuffer.updateResources(heatBuffer.resourceCount - possibleHeatConsumed + refusedHeat) # FIXME: this can be just 1 method	
-	steamBuffer.updateResources(steamBuffer.resourceCount - outputSocket.sendResourcesToConnectedInputSocket(steamBuffer.resourceCount))
+	heatBuffer.reduceResources(possibleHeatConsumed + refusedHeat)
+	steamBuffer.reduceResources(outputSocket.sendResourcesToConnectedInputSocket(steamBuffer.resourceCount))
 
 ## This returns the number of accepted resources
-func receiveResources(heatInflow: float) -> float:
-	return heatBuffer.receiveResources(heatInflow)
+func increaseResources(heatInflow: float) -> float:
+	return heatBuffer.increaseResources(heatInflow)

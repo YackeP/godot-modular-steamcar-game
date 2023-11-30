@@ -29,9 +29,9 @@ func _physics_process(delta: float) -> void:
 	var powerProduced = possibleSteamConsumed * steamToPowerTransferRatio
 	# we don't reject any power, we just accept it all
 	
-	steamBuffer.updateResources(steamBuffer.resourceCount - possibleSteamConsumed)
+	steamBuffer.reduceResources(possibleSteamConsumed)
 	outputSocket.sendResourcesToConnectedInputSocket(powerProduced)
 
 ## This returns the value of accepted resources
-func receiveResources(steamInflow: float) -> float:
-	return steamBuffer.receiveResources(steamInflow)
+func increaseResources(steamInflow: float) -> float:
+	return steamBuffer.increaseResources(steamInflow)

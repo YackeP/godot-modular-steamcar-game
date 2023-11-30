@@ -38,4 +38,4 @@ func outputSocketContainsCompatibleResourceType(socket: OutputSocket) -> bool:
 
 ## this will return the value accepted (taken) by the input
 func sendResourcesToConnectedResourceBuffer(resourceCount: float) -> float:
-	return targetResourceBuffer.receiveResources(resourceCount)
+	return targetResourceBuffer.increaseResources(resourceCount)

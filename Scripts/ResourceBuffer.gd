@@ -19,14 +19,16 @@ func _ready() -> void:
 
 
 ## this will return the value accepted by the buffer
-func receiveResources(resourceInflow: float) -> float:
+func increaseResources(resourceInflow: float) -> float:
 	var overflow = max(0,(resourceCount + resourceInflow) - _resourceCapacity)
 	resourceCount = resourceCount + resourceInflow
 	return resourceInflow - overflow
 
+func reduceResources(requested: float) -> float:
+	var returned = max(0, resourceCount - requested)
+	resourceCount -= requested
+	return returned
+
 ## called by the main component script
 func updateResources(newCount: float) -> void:
 	resourceCount = newCount
-	pass
-
-

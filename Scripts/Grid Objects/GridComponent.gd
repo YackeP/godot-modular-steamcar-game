@@ -17,8 +17,8 @@ func outputSocketConnected() -> void:
 func outputSocketDisconnected() -> void:
 	pass
 	
-func receiveResources(count: float) -> float:
-	Logger.warn("receiveResources() not implemented")
+func increaseResources(count: float) -> float:
+	Logger.warn("increaseResources() not implemented")
 	return 0.0
 
 

@@ -25,7 +25,7 @@
 - [x] Add components for a full furnace -> boiler -> piston -> engine (wheel) output
 - [x] 27.11.2023 Add a universal component for holding resources per grid component, ResourceBuffer
 - [x] 29.11.2023 Refactor existing grid components to use ResourceBuffer
-- [ ] Refactor InputSockets to connect to ResourceBuffers
+- [x] 30.11.2023 Refactor InputSockets to connect to ResourceBuffers
 - [ ] Add an option to delete placed objects and re-enable the spots to be taken by other objects
 	- This could be implemented by passing a reference to spots taken while the object is being created
 		- or, passing a method (lambda with parameters filled in) that will free these spots, so that only gridMangager will need to know how to free the space
