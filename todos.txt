@@ -26,6 +26,13 @@
 - [x] 27.11.2023 Add a universal component for holding resources per grid component, ResourceBuffer
 - [x] 29.11.2023 Refactor existing grid components to use ResourceBuffer
 - [x] 30.11.2023 Refactor InputSockets to connect to ResourceBuffers
+- [x] 02.12.2023 Fix a bug where putting down a grid component took a different grid space than the one the grid component was placed on
+	- It was caused by copying instantiated scenes:
+		- GridSpace's scene script has a reference to a collider which it will disable
+		- Duplicated GridSpace had references to colliders of their origin scenes (scenes they were duplicated from), when they should have references to colliders which are in their own scene
+		- This can be inspected by starting the game, and inspecting the remote - the scenes get unfurled
+		- eg. before 02.12.2023, GridSpace16's collider references a collider belonging to GridSpace11's
+		- This was fixed by resetting the collider in these scene instances -> this turns them back to original scene's path, which is the collider below the scene
 - [ ] Add an option to delete placed objects and re-enable the spots to be taken by other objects
 	- This could be implemented by passing a reference to spots taken while the object is being created
 		- or, passing a method (lambda with parameters filled in) that will free these spots, so that only gridMangager will need to know how to free the space
