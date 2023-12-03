@@ -33,13 +33,15 @@
 		- This can be inspected by starting the game, and inspecting the remote - the scenes get unfurled
 		- eg. before 02.12.2023, GridSpace16's collider references a collider belonging to GridSpace11's
 		- This was fixed by resetting the collider in these scene instances -> this turns them back to original scene's path, which is the collider below the scene
-- [ ] Add an option to delete placed objects and re-enable the spots to be taken by other objects
+- [x] 03.12.2023 Add an option to delete placed objects and re-enable the spots to be taken by other objects
 	- This could be implemented by passing a reference to spots taken while the object is being created
 		- or, passing a method (lambda with parameters filled in) that will free these spots, so that only gridMangager will need to know how to free the space
 
 
 # small tweaks and TODOs:
-- [ ] Refactor the PlacedObjects from StaticBody3D to Node3D with a child Collider, so that they can have a consistent collider object
+- [x] 03.12.2023 Refactor the PlacedObjects from StaticBody3D to Node3D with a child Collider, so that they can have a consistent collider object
+	- used scene inheritance to make this happen
+- [ ] Make the component ghosts use SceneInheritance as well
 
 # down the line
 - [ ] Find or implement a simple driving model

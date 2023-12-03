@@ -8,9 +8,7 @@ const gridComponentLayerMask := 0b00000000_00000000_00000000_00001000 # layer 4
 var placeableObjects: Array[PlaceableObjectDefinition] = [
 	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/CoalFurnace.tscn"),preload("res://Scenes/PlacedObjectGhosts/CoalFurnaceGhost.tscn")),
 	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/SteamBoiler.tscn"),preload("res://Scenes/PlacedObjectGhosts/SteamBoilerGhost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/SteamPiston.tscn"),preload("res://Scenes/PlacedObjectGhosts/SteamPistonGhost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/FuelTank.tscn"),preload("res://Scenes/PlacedObjectGhosts/FuelTankGhost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/RocketEngine.tscn"),preload("res://Scenes/PlacedObjectGhosts/RocketEngineGhost.tscn"))
+	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/SteamPiston.tscn"),preload("res://Scenes/PlacedObjectGhosts/SteamPistonGhost.tscn"))
 ]
 
 var selectedPlaceable: PlaceableObjectDefinition
