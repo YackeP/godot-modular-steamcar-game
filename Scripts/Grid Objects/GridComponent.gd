@@ -2,28 +2,19 @@ extends Node3D
 
 class_name GridComponent
 
-# Could these be implemented using signals instead of direct function calls?
-# If so, what would it actually give us?
+var occupiedSpaces: Array[GridSpace]
 
-func inputSocketConnected() -> void:
-	pass
+func setOccupiedSpaces(_occupiedSpaces: Array[GridSpace]) -> void:
+	occupiedSpaces = _occupiedSpaces
 	
-func inputSocketDisconnected() -> void:
-	pass
+func onClick():
+	Logger.info("deleting " + name)
+	queue_free()
 
-func outputSocketConnected() -> void:
-	pass
-	
-func outputSocketDisconnected() -> void:
-	pass
-	
-func increaseResources(count: float) -> float:
-	Logger.warn("increaseResources() not implemented")
-	return 0.0
+func _on_collider_input_event(camera: Node, event: InputEvent, position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == 2:
+		onClick() # Replace with function body.
 
-
-enum GridComponentType {
-	BOILER,
-	FURNACE,
-	PISTON
-}
+func _exit_tree() -> void:
+	for space in occupiedSpaces:
+		space.freeSpace()

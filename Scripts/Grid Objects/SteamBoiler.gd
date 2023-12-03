@@ -1,9 +1,9 @@
-extends StaticBody3D
+extends GridComponent
 
 class_name SteamBoiler
 
-@export var heatToSteamTransferRatio: float = 1.0
-@export var heatConsumptionSpeed: float = 1.0 # speed per second
+@export var heatToSteamTransferRatio: float = 0.9
+@export var heatConsumptionSpeed: float = 0.9 # speed per second
 
 @export var outputSocket: OutputSocket
 

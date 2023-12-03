@@ -1,61 +1,59 @@
-[gd_scene load_steps=7 format=3 uid="uid://ddh4ckbmx18ks"]
+[gd_scene load_steps=8 format=3 uid="uid://cco7xyyycqjq0"]
 
-[ext_resource type="PackedScene" uid="uid://d5jcajdxl2oq" path="res://Scenes/BuildingBlocks/InputSocket.tscn" id="1_wehf2"]
-[ext_resource type="Script" path="res://Scripts/Grid Objects/SteamPiston.gd" id="1_wesu7"]
-[ext_resource type="PackedScene" uid="uid://d0hp2qe3egj44" path="res://Scenes/BuildingBlocks/OutputSocket.tscn" id="2_7urgt"]
-[ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="4_47vqu"]
-[ext_resource type="PackedScene" uid="uid://csk3xje56hlfk" path="res://Scenes/BuildingBlocks/ResourceBuffer.tscn" id="5_3jsbc"]
+[ext_resource type="PackedScene" uid="uid://cce1gdkkskh77" path="res://Scenes/PlacedObjects/GridComponentBase.tscn" id="1_f881l"]
+[ext_resource type="Script" path="res://Scripts/Grid Objects/SteamPiston.gd" id="2_svsrl"]
+[ext_resource type="PackedScene" uid="uid://d5jcajdxl2oq" path="res://Scenes/BuildingBlocks/InputSocket.tscn" id="2_xfxev"]
+[ext_resource type="PackedScene" uid="uid://d0hp2qe3egj44" path="res://Scenes/BuildingBlocks/OutputSocket.tscn" id="3_iwsin"]
+[ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="4_u6dxr"]
+[ext_resource type="PackedScene" uid="uid://csk3xje56hlfk" path="res://Scenes/BuildingBlocks/ResourceBuffer.tscn" id="5_186xm"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7bupd"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3p3bg"]
+size = Vector3(1, 1.47607, 2.08594)
 
-[node name="SteamPiston" type="StaticBody3D" node_paths=PackedStringArray("outputSocket", "steamBuffer")]
-script = ExtResource("1_wesu7")
-steamCapacity = 1.0
+[node name="SteamPiston" node_paths=PackedStringArray("outputSocket", "steamBuffer") instance=ExtResource("1_f881l")]
+script = ExtResource("2_svsrl")
+steamCapacity = 3.0
 steamToPowerTransferRatio = 0.9
 steamConsumptionSpeed = 0.9
 outputSocket = NodePath("Output Socket")
 steamBuffer = NodePath("SteamBuffer")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500144, 0)
-shape = SubResource("BoxShape3D_7bupd")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collider" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.238037, 0.542969)
+shape = SubResource("BoxShape3D_3p3bg")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.500144, 1)
-shape = SubResource("BoxShape3D_7bupd")
+[node name="Shape" type="Node3D" parent="." index="1"]
 
-[node name="Shape" type="Node3D" parent="."]
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Shape"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Shape" index="0"]
 transform = Transform3D(0.61, 0, 0, 0, 0.45, 0, 0, 0, 0.61, 0, 0.455969, 0.0269359)
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Shape"]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Shape" index="1"]
 transform = Transform3D(0.1, 0, 0, 0, 0.0116076, -0.0999804, 0, -0.585885, -0.00198082, 0, 0.455969, 0.654277)
 height = 1.48669
 
-[node name="CSGTorus3D" type="CSGTorus3D" parent="Shape"]
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Shape" index="2"]
 transform = Transform3D(-1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 0, 0, 0.3, 0.104649, 0.359186, 1.04027)
 
-[node name="Input Socket" parent="." node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("1_wehf2")]
+[node name="Input Socket" parent="." index="2" node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("2_xfxev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 targetResourceBuffer = NodePath("../SteamBuffer")
 
-[node name="Input Socket2" parent="." node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("1_wehf2")]
+[node name="Input Socket2" parent="." index="3" node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("2_xfxev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 targetResourceBuffer = NodePath("../SteamBuffer")
 
-[node name="Input Socket3" parent="." node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("1_wehf2")]
+[node name="Input Socket3" parent="." index="4" node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("2_xfxev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 targetResourceBuffer = NodePath("../SteamBuffer")
 
-[node name="Output Socket" parent="." instance=ExtResource("2_7urgt")]
+[node name="Output Socket" parent="." index="5" instance=ExtResource("3_iwsin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1)
 outputType = 3
 
-[node name="DebugNode" parent="." instance=ExtResource("4_47vqu")]
+[node name="DebugNode" parent="." index="6" instance=ExtResource("4_u6dxr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34037, 0)
 
-[node name="SteamBuffer" parent="." instance=ExtResource("5_3jsbc")]
+[node name="SteamBuffer" parent="." index="7" instance=ExtResource("5_186xm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12802, 0.542177)
 resourceType = 2
 _resourceCapacity = 1.0

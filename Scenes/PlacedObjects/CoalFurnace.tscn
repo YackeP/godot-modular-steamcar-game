@@ -1,43 +1,47 @@
-[gd_scene load_steps=7 format=3 uid="uid://8jfgpnwkairs"]
+[gd_scene load_steps=8 format=3 uid="uid://q3rg6k3vke6d"]
 
 [ext_resource type="Script" path="res://Scripts/CoalFurnace.gd" id="1_0p6ty"]
+[ext_resource type="PackedScene" uid="uid://cce1gdkkskh77" path="res://Scenes/PlacedObjects/GridComponentBase.tscn" id="1_200ii"]
 [ext_resource type="PackedScene" uid="uid://clbw04ad863eb" path="res://Models/Steamer.glb" id="1_hkdel"]
-[ext_resource type="Shape3D" uid="uid://dfdse2c1n21jl" path="res://Scenes/GridColliderShape.tres" id="3_m50qc"]
 [ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="4_1ljr4"]
 [ext_resource type="PackedScene" uid="uid://d0hp2qe3egj44" path="res://Scenes/BuildingBlocks/OutputSocket.tscn" id="4_u16de"]
 [ext_resource type="PackedScene" uid="uid://csk3xje56hlfk" path="res://Scenes/BuildingBlocks/ResourceBuffer.tscn" id="6_cf4iw"]
 
-[node name="CoalFurnace" type="StaticBody3D" node_paths=PackedStringArray("outputSockets", "resourceBuffer")]
-collision_layer = 8
-collision_mask = 8
+[sub_resource type="BoxShape3D" id="BoxShape3D_gavby"]
+size = Vector3(0.7, 0.599028, 0.7)
+
+[node name="CoalFurnace" node_paths=PackedStringArray("outputSockets", "resourceBuffer") instance=ExtResource("1_200ii")]
 script = ExtResource("1_0p6ty")
+heatGeneratedPerSecond = 1.0
+heatOutputSpeed = 0.75
 outputSockets = [NodePath("Output Socket"), NodePath("Output Socket2"), NodePath("Output Socket3"), NodePath("Output Socket4")]
 resourceBuffer = NodePath("ResourceBuffer")
 
-[node name="Steamer" parent="." instance=ExtResource("1_hkdel")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collider" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.292902, 0)
+shape = SubResource("BoxShape3D_gavby")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = ExtResource("3_m50qc")
+[node name="Steamer" parent="." index="1" instance=ExtResource("1_hkdel")]
 
-[node name="DebugNode" parent="." instance=ExtResource("4_1ljr4")]
+[node name="DebugNode" parent="." index="2" instance=ExtResource("4_1ljr4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.923674, 0)
 
-[node name="Output Socket" parent="." instance=ExtResource("4_u16de")]
+[node name="Output Socket" parent="." index="3" instance=ExtResource("4_u16de")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.500488, 0, 0)
 outputType = 1
 
-[node name="Output Socket2" parent="." instance=ExtResource("4_u16de")]
+[node name="Output Socket2" parent="." index="4" instance=ExtResource("4_u16de")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 outputType = 1
 
-[node name="Output Socket3" parent="." instance=ExtResource("4_u16de")]
+[node name="Output Socket3" parent="." index="5" instance=ExtResource("4_u16de")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 outputType = 1
 
-[node name="Output Socket4" parent="." instance=ExtResource("4_u16de")]
+[node name="Output Socket4" parent="." index="6" instance=ExtResource("4_u16de")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 outputType = 1
 
-[node name="ResourceBuffer" parent="." instance=ExtResource("6_cf4iw")]
+[node name="ResourceBuffer" parent="." index="7" instance=ExtResource("6_cf4iw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 resourceType = 1

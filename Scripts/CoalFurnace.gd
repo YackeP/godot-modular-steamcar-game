@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends GridComponent
 
 class_name CoalFurnace
 
@@ -12,7 +12,6 @@ class_name CoalFurnace
 
 func _ready() -> void:
 	assert(!outputSockets.is_empty(), "Coal furnace requires an OutputSocket!")
-
 
 func _physics_process(delta: float) -> void:
 #	resourceBuffer.increaseResources(heatGeneratedPerSecond * delta)

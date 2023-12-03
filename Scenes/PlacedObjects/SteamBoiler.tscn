@@ -1,60 +1,54 @@
-[gd_scene load_steps=8 format=3 uid="uid://bai48k6kpynuh"]
+[gd_scene load_steps=9 format=3 uid="uid://diuilli57etc0"]
 
 [ext_resource type="PackedScene" uid="uid://3aenfxjethb7" path="res://Models/PipeWorksPack/Meshes/cylo_tall.glb" id="1_4l6jb"]
-[ext_resource type="Script" path="res://Scripts/Grid Objects/Boiler.gd" id="1_4tibu"]
+[ext_resource type="PackedScene" uid="uid://cce1gdkkskh77" path="res://Scenes/PlacedObjects/GridComponentBase.tscn" id="1_6o4vt"]
 [ext_resource type="Shape3D" uid="uid://dfdse2c1n21jl" path="res://Scenes/GridColliderShape.tres" id="2_imlft"]
+[ext_resource type="Script" path="res://Scripts/Grid Objects/SteamBoiler.gd" id="2_savo2"]
 [ext_resource type="PackedScene" uid="uid://d5jcajdxl2oq" path="res://Scenes/BuildingBlocks/InputSocket.tscn" id="3_bdcx4"]
 [ext_resource type="PackedScene" uid="uid://d0hp2qe3egj44" path="res://Scenes/BuildingBlocks/OutputSocket.tscn" id="4_12q4f"]
 [ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="6_g3pkd"]
 [ext_resource type="PackedScene" uid="uid://csk3xje56hlfk" path="res://Scenes/BuildingBlocks/ResourceBuffer.tscn" id="7_8vruk"]
 
-[node name="SteamBoiler" type="StaticBody3D" node_paths=PackedStringArray("outputSocket", "heatBuffer", "steamBuffer")]
-script = ExtResource("1_4tibu")
+[node name="SteamBoiler" node_paths=PackedStringArray("outputSocket", "heatBuffer", "steamBuffer") instance=ExtResource("1_6o4vt")]
+script = ExtResource("2_savo2")
 heatToSteamTransferRatio = 0.9
 heatConsumptionSpeed = 0.9
 outputSocket = NodePath("Output Socket")
 heatBuffer = NodePath("HeatBuffer")
 steamBuffer = NodePath("SteamBuffer")
 
-[node name="cylo_tall" parent="." instance=ExtResource("1_4l6jb")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collider" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.439836, 0)
+shape = ExtResource("2_imlft")
+
+[node name="cylo_tall" parent="." index="1" instance=ExtResource("1_4l6jb")]
 transform = Transform3D(0.18, 0, 0, 0, -7.86805e-09, -0.18, 0, 0.18, -7.86805e-09, 0, 0.448117, -1.23634)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = ExtResource("2_imlft")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-shape = ExtResource("2_imlft")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-shape = ExtResource("2_imlft")
-
-[node name="Input Socket" parent="." node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("3_bdcx4")]
+[node name="Input Socket" parent="." index="2" node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("3_bdcx4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.549758, 0, 0)
 targetResourceBuffer = NodePath("../HeatBuffer")
 
-[node name="Input Socket3" parent="." node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("3_bdcx4")]
+[node name="Input Socket3" parent="." index="3" node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("3_bdcx4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
 targetResourceBuffer = NodePath("../HeatBuffer")
 
-[node name="Input Socket2" parent="." node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("3_bdcx4")]
+[node name="Input Socket2" parent="." index="4" node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("3_bdcx4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 targetResourceBuffer = NodePath("../HeatBuffer")
 
-[node name="Output Socket" parent="." instance=ExtResource("4_12q4f")]
+[node name="Output Socket" parent="." index="5" instance=ExtResource("4_12q4f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 outputType = 2
 
-[node name="DebugNode" parent="." instance=ExtResource("6_g3pkd")]
+[node name="DebugNode" parent="." index="6" instance=ExtResource("6_g3pkd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27983, 0)
 
-[node name="HeatBuffer" parent="." instance=ExtResource("7_8vruk")]
+[node name="HeatBuffer" parent="." index="7" instance=ExtResource("7_8vruk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28048, 0.821798)
 resourceType = 1
 _resourceCapacity = 5.0
 
-[node name="SteamBuffer" parent="." instance=ExtResource("7_8vruk")]
+[node name="SteamBuffer" parent="." index="8" instance=ExtResource("7_8vruk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19194, -0.600423)
 resourceType = 2
 _resourceCapacity = 5.0

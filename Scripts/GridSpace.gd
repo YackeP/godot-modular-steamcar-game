@@ -6,3 +6,6 @@ class_name GridSpace
 
 func takeSpace() -> void:
 	collider.disabled = true
+
+func freeSpace() -> void:
+	collider.disabled = false
