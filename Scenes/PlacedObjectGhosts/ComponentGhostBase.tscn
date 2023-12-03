@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw781wanxnnah"]
+
+[ext_resource type="PackedScene" uid="uid://dmymgqrmmyt22" path="res://Scenes/BuildingBlocks/GhostPlacementSlots.tscn" id="1_jhsmo"]
+[ext_resource type="Script" path="res://Scripts/PlacementGhost.gd" id="1_od82t"]
+
+[node name="ComponentGhostBase" type="Node3D"]
+script = ExtResource("1_od82t")
+
+[node name="GhostPlacementSlots" parent="." instance=ExtResource("1_jhsmo")]

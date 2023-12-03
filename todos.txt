@@ -41,7 +41,7 @@
 # small tweaks and TODOs:
 - [x] 03.12.2023 Refactor the PlacedObjects from StaticBody3D to Node3D with a child Collider, so that they can have a consistent collider object
 	- used scene inheritance to make this happen
-- [ ] Make the component ghosts use SceneInheritance as well
+- [x] 03.12.2023 Make the component ghosts use SceneInheritance as well
 
 # down the line
 - [ ] Find or implement a simple driving model
