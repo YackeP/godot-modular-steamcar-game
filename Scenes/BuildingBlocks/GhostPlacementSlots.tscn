@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dmymgqrmmyt22"]
 
-[ext_resource type="Script" path="res://Scripts/GhostPlacementSlots.gd" id="1_q838v"]
+[ext_resource type="Script" path="res://Scripts/Grid Objects/GhostPlacementSlots.gd" id="1_q838v"]
 
 [node name="GhostPlacementSlots" type="Area3D"]
 collision_layer = 0

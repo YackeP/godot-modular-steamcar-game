@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://q3rg6k3vke6d"]
 
-[ext_resource type="Script" path="res://Scripts/CoalFurnace.gd" id="1_0p6ty"]
+[ext_resource type="Script" path="res://Scripts/Grid Objects/CoalFurnace.gd" id="1_0p6ty"]
 [ext_resource type="PackedScene" uid="uid://cce1gdkkskh77" path="res://Scenes/PlacedObjects/GridComponentBase.tscn" id="1_200ii"]
 [ext_resource type="PackedScene" uid="uid://clbw04ad863eb" path="res://Models/Steamer.glb" id="1_hkdel"]
 [ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="4_1ljr4"]

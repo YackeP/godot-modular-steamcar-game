@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://da73j8d253lys"]
+
+[ext_resource type="PackedScene" uid="uid://i2cuit8utrp3" path="res://Scenes/Vehicles/BananaCar.tscn" id="1_4uh2l"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_12ihf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3bkq"]
+albedo_color = Color(0, 0.282353, 0.286275, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j3ef1"]
+
+[sub_resource type="Sky" id="Sky_rcxeu"]
+sky_material = SubResource("ProceduralSkyMaterial_j3ef1")
+
+[sub_resource type="Environment" id="Environment_vavlv"]
+background_mode = 2
+sky = SubResource("Sky_rcxeu")
+
+[node name="DrivingTrack" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.56821, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
+mesh = SubResource("QuadMesh_12ihf")
+material = SubResource("StandardMaterial3D_a3bkq")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8233, -0.274145, 0.497012, -0.495155, 0.0811837, 0.865003, -0.277486, -0.958256, -0.0689056, 0, 10.8016, 0)
+light_energy = 3.438
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vavlv")
+
+[node name="BananaCar" parent="." instance=ExtResource("1_4uh2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25314, 0)

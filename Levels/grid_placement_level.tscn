@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6c8qvi412c8w"]
 
 [ext_resource type="Script" path="res://Scripts/GridPlacementController.gd" id="1_r2yk8"]
-[ext_resource type="PackedScene" uid="uid://jmr48tafi0tm" path="res://Scenes/GridSpace.tscn" id="2_jqtlm"]
-[ext_resource type="PackedScene" uid="uid://ceutc06ahdbxi" path="res://Scenes/WallInputSocket.tscn" id="3_p4qu7"]
+[ext_resource type="PackedScene" uid="uid://jmr48tafi0tm" path="res://Scenes/BuildingBlocks/GridSpace.tscn" id="2_jqtlm"]
+[ext_resource type="PackedScene" uid="uid://ceutc06ahdbxi" path="res://Scenes/BuildingBlocks/WallInputSocket.tscn" id="3_p4qu7"]
 
 [node name="GridPlacementController" type="Node3D"]
 script = ExtResource("1_r2yk8")

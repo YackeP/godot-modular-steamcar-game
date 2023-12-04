@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ceutc06ahdbxi"]
 
-[ext_resource type="Script" path="res://Scripts/WallInputSocket.gd" id="1_sr8h6"]
+[ext_resource type="Script" path="res://Scripts/Grid Objects/WallInputSocket.gd" id="1_sr8h6"]
 [ext_resource type="Texture2D" uid="uid://do2wrlhp6xg3w" path="res://Textures/Soapstone01_MR_1K/Soapstone01_1K_BaseColor.png" id="2_1kdw4"]
 [ext_resource type="PackedScene" uid="uid://d5jcajdxl2oq" path="res://Scenes/BuildingBlocks/InputSocket.tscn" id="3_devfd"]
 [ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="4_yuort"]

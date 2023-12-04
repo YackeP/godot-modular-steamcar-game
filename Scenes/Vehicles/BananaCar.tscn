@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://i2cuit8utrp3"]
+
+[ext_resource type="PackedScene" uid="uid://do15h1qi5veiv" path="res://Scenes/Vehicles/BaseCar.tscn" id="1_wow6j"]
+[ext_resource type="PackedScene" uid="uid://6nk2jccjefy2" path="res://Models/cartoon banana car.glb" id="2_edqcu"]
+
+[node name="BananaCar" instance=ExtResource("1_wow6j")]
+
+[node name="VehicleCamera3d" parent="Camera" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.974347, 0.225053, 0, -0.225053, 0.974347, 0, 1.97324, 6.19962)
+
+[node name="cartoon banana car" parent="." index="7" instance=ExtResource("2_edqcu")]
+transform = Transform3D(-0.007, 0, -6.11959e-10, 0, 0.007, 0, 6.11959e-10, 0, -0.007, 0, 1.34301, 0)

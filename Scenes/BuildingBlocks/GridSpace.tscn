@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://jmr48tafi0tm"]
 
-[ext_resource type="Script" path="res://Scripts/GridSpace.gd" id="1_rgjiu"]
+[ext_resource type="Script" path="res://Scripts/Grid Objects/GridSpace.gd" id="1_rgjiu"]
 [ext_resource type="Texture2D" uid="uid://do2wrlhp6xg3w" path="res://Textures/Soapstone01_MR_1K/Soapstone01_1K_BaseColor.png" id="1_uxobi"]
 [ext_resource type="Texture2D" uid="uid://cmw3f2q75sva2" path="res://Textures/Wood10_MR_1K/Wood10_1K_BaseColor.png" id="2_j42bb"]
 [ext_resource type="Shape3D" uid="uid://dfdse2c1n21jl" path="res://Scenes/GridColliderShape.tres" id="4_b8320"]

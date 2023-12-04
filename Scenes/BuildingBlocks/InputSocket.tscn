@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d5jcajdxl2oq"]
 
 [ext_resource type="Shape3D" uid="uid://hhwcvjhrhjju" path="res://Scenes/SocketShape.tres" id="1_l8bja"]
-[ext_resource type="Script" path="res://Scripts/InputSocket.gd" id="1_una4s"]
+[ext_resource type="Script" path="res://Scripts/Grid Objects/InputSocket.gd" id="1_una4s"]
 [ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="3_0li7r"]
 
 [node name="Input Socket" type="Area3D"]
