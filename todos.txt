@@ -36,6 +36,12 @@
 - [x] 03.12.2023 Add an option to delete placed objects and re-enable the spots to be taken by other objects
 	- This could be implemented by passing a reference to spots taken while the object is being created
 		- or, passing a method (lambda with parameters filled in) that will free these spots, so that only gridMangager will need to know how to free the space
+--- CAR MODULE START ---
+- [x] 04.12.2023 Find or implement a simple driving model
+- [ ] Find/create a free map for driving a car
+- [x] 07.12.2023 Switch between placement and driving scenes
+- [ ] Expose the driving parameters to some changeable variables
+- [ ] Have placement scene output numbers impact the diving characteristics 
 
 
 # small tweaks and TODOs:
@@ -43,14 +49,7 @@
 	- used scene inheritance to make this happen
 - [x] 03.12.2023 Make the component ghosts use SceneInheritance as well
 
-# down the line
-- [x] 04.12.2023 Find or implement a simple driving model
-- [ ] Find/create a free map for driving a car
-- [ ] Switch between placement and driving scenes
-- [ ] Expose the driving parameters to some changeable variables
-- [ ] Have placement scene output numbers impact the diving characteristics 
-
 # nice to have
-- [ ] UI for previewing the selected house
-- [ ] UI for selecting the houses  
+- [ ] UI for previewing the selected component
+- [ ] UI for selecting the components
 - [ ] Changing ghost color when placement is invalid

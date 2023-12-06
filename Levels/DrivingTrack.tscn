@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://da73j8d253lys"]
+[gd_scene load_steps=8 format=3 uid="uid://da73j8d253lys"]
 
 [ext_resource type="PackedScene" uid="uid://i2cuit8utrp3" path="res://Scenes/Vehicles/BananaCar.tscn" id="1_4uh2l"]
+[ext_resource type="Script" path="res://Scripts/DrivingWorldController.gd" id="1_dnlen"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_12ihf"]
 
@@ -16,8 +17,10 @@ sky_material = SubResource("ProceduralSkyMaterial_j3ef1")
 background_mode = 2
 sky = SubResource("Sky_rcxeu")
 
-[node name="DrivingTrack" type="Node3D"]
+[node name="DrivingTrack" type="Node3D" node_paths=PackedStringArray("_playerVehicle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.56821, 0)
+script = ExtResource("1_dnlen")
+_playerVehicle = NodePath("BananaCar")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true

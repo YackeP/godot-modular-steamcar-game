@@ -1,5 +1,7 @@
 extends VehicleBody3D
 
+class_name BaseCar
+
 # taken from https://github.com/HotHead007/Car-Demo
 
 @export var STEER_SPEED = 1.5
