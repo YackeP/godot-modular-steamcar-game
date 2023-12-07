@@ -30,28 +30,30 @@ func disable():
 	pass
 
 func _physics_process(delta) -> void:
-	if _selectedPlaceable != null:
-		var hitGridSpace = getGridSpaceHitByMouse()
-		if hitGridSpace != null:
-			if _houseGhost == null:
-				_createGhost(_selectedPlaceable.ghost)
-			_houseGhost.position = getNearestGridPosition(hitGridSpace.position)
-		elif _houseGhost != null:
-			_removeGhost()
+	if _enabled:
+		if _selectedPlaceable != null:
+			var hitGridSpace = getGridSpaceHitByMouse()
+			if hitGridSpace != null:
+				if _houseGhost == null:
+					_createGhost(_selectedPlaceable.ghost)
+				_houseGhost.position = getNearestGridPosition(hitGridSpace.position)
+			elif _houseGhost != null:
+				_removeGhost()
 
 func _input(event):
-	if event is InputEventKey:
-		var pressedNumber = _get_pressed_number(event)
-		if (pressedNumber >= 0 and pressedNumber < _PLACEABLE_OBJECTS.size()):
-			_selectedPlaceable = _PLACEABLE_OBJECTS[pressedNumber]
-			_removeGhost()
-			_createGhost(_selectedPlaceable['ghost'])
-	
-	elif event is InputEventMouseButton and event.pressed:
-		if event.button_index == 1 and _selectedPlaceable != null:
-			_tryPlaceGridComponent()
-		elif event.button_index == 2:
-			_tryDeleteGridComponent()
+	if _enabled:
+		if event is InputEventKey:
+			var pressedNumber = _get_pressed_number(event)
+			if (pressedNumber >= 0 and pressedNumber < _PLACEABLE_OBJECTS.size()):
+				_selectedPlaceable = _PLACEABLE_OBJECTS[pressedNumber]
+				_removeGhost()
+				_createGhost(_selectedPlaceable['ghost'])
+		
+		elif event is InputEventMouseButton and event.pressed:
+			if event.button_index == 1 and _selectedPlaceable != null:
+				_tryPlaceGridComponent()
+			elif event.button_index == 2:
+				_tryDeleteGridComponent()
 
 func _removeGhost() -> void:
 	if( _houseGhost != null):
