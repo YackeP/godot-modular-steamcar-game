@@ -12,6 +12,11 @@ var _PLACEABLE_OBJECTS: Array[PlaceableObjectDefinition] = [
 ]
 
 @export var _camera: Camera3D
+@export var _inputSockets: Array[WallInputSocket]
+
+# TODO: implement this using signals -> whenever any input gets changed, it sends a signal to here
+#	here, handle the input by updating some value, and then sending the total value as a message that gets received by the driving controller
+var totalEnginePower: float = 0.0
 
 var _enabled: bool = false
 
@@ -39,6 +44,12 @@ func _physics_process(delta) -> void:
 				_houseGhost.position = getNearestGridPosition(hitGridSpace.position)
 			elif _houseGhost != null:
 				_removeGhost()
+	
+	# FIXME: use signals instead - maybe register them in _ready() by filtering all the children?
+	totalEnginePower = 0
+	for socket in _inputSockets:
+		totalEnginePower += socket.power
+	
 
 func _input(event):
 	if _enabled:

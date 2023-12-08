@@ -40,8 +40,10 @@
 - [x] 04.12.2023 Find or implement a simple driving model
 - [ ] Find/create a free map for driving a car
 - [x] 07.12.2023 Switch between placement and driving scenes
-- [ ] Expose the driving parameters to some changeable variables
-- [ ] Have placement scene output numbers impact the diving characteristics 
+- [x] 08.12.2023 Fix a bug with grid placement not working after changing scenes
+- [x] 08.12.2023 Expose the driving parameters to some changeable variables
+- [x] 08.12.2023 Have placement scene output numbers impact the diving characteristics 
+- [ ] Refactor driving characteristics being derived from grid placement into using signals
 
 
 # small tweaks and TODOs:

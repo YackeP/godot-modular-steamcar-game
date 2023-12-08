@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://jmr48tafi0tm" path="res://Scenes/BuildingBlocks/GridSpace.tscn" id="2_jqtlm"]
 [ext_resource type="PackedScene" uid="uid://ceutc06ahdbxi" path="res://Scenes/BuildingBlocks/WallInputSocket.tscn" id="3_p4qu7"]
 
-[node name="GridPlacementController" type="Node3D" node_paths=PackedStringArray("_camera")]
+[node name="GridPlacementController" type="Node3D" node_paths=PackedStringArray("_camera", "_inputSockets")]
 script = ExtResource("1_r2yk8")
 _camera = NodePath("Camera3D")
+_inputSockets = [NodePath("GridMap/WallInputSocket"), NodePath("GridMap/WallInputSocket2"), NodePath("GridMap/WallInputSocket3")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.384743, 0.851667, -0.35586, -0.492764, 0.136481, 0.859393, 0.780485, 0.506, 0.367161, -2.74391, 1.63777, 6.85233)

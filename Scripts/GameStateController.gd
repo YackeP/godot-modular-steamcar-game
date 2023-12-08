@@ -20,6 +20,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	_deltaKeyPress += delta
+	# FIXME: use signals instead
+	drivingWorldController.setEngineBonusPower(gridPlacementController.totalEnginePower)
 	
 func _input(event):
 	if event is InputEventKey:

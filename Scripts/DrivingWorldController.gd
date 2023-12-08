@@ -4,6 +4,9 @@ class_name DrivingWorldController
 
 @export var _playerVehicle: BaseCar
 
+func setEngineBonusPower(bonusPower: float):
+	_playerVehicle.setEngineBonusPower(bonusPower)
+
 func enable():
 	if _playerVehicle.get_parent_node_3d() == null:
 		add_child(_playerVehicle)
