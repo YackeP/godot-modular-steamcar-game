@@ -1,5 +1,6 @@
 extends Node3D
 
+# can also be called PlayerStateController
 class_name GameStateController
 # can this sort of management be done instead using signals and events?
 
@@ -16,7 +17,7 @@ var _deltaKeyPress = _RESET_DELTA_KEY
 func _ready() -> void:
 	gridPlacementController.disable()
 	drivingWorldController.enable()
-
+	gridPlacementController.powerOutputted.connect(_setCarPower)
 
 func _physics_process(delta: float) -> void:
 	_deltaKeyPress += delta
@@ -35,6 +36,9 @@ func _input(event):
 				_gameState = GameState.DRIVING
 				drivingWorldController.enable()
 				gridPlacementController.disable()
+
+func _setCarPower(power: float):
+	drivingWorldController.setEngineBonusPower(power)
 
 enum GameState {
 	UNDEFINED,

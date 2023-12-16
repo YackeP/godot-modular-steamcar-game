@@ -2,6 +2,8 @@ extends Node3D
 
 class_name GridPlacementController
 
+signal powerOutputted(power: float)
+
 const _RAY_LENGTH = 1000
 const _GRID_SLOT_LAYER_MASK := 0b00000000_00000000_00000000_00010000 # layer 5
 const _GRID_COMPONENT_LAYER_MASK := 0b00000000_00000000_00000000_00001000 # layer 4
@@ -49,7 +51,8 @@ func _physics_process(delta) -> void:
 	totalEnginePower = 0
 	for socket in _inputSockets:
 		totalEnginePower += socket.power
-	
+	powerOutputted.emit(totalEnginePower)
+
 
 func _input(event):
 	if _enabled:
