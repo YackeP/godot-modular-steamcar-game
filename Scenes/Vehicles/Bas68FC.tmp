@@ -111,6 +111,7 @@ offset_right = 837.0
 offset_bottom = 490.0
 script = ExtResource("3_ghamt")
 speed0degrees = -130.0
+speed150degrees = null
 gauge = NodePath("gauge")
 text = NodePath("value")
 

@@ -53,6 +53,7 @@
 - [x] 03.12.2023 Make the component ghosts use SceneInheritance as well
 
 # nice to have
+- [ ] Spedometer graphic
 - [ ] UI for previewing the selected component
 - [ ] UI for selecting the components
 - [ ] Changing ghost color when placement is invalid

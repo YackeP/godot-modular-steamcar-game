@@ -18,6 +18,7 @@ func _physics_process(delta):
 	var speed = linear_velocity.length()*Engine.get_frames_per_second()*delta
 	traction(speed)
 	$Hud/speed.text=str(round(speed*3.8))+"  KMPH"
+	$Hud/spedometer.updateGauge(round(speed*3.8))
 	$Hud/power.text="PWR:" + str(_engineForceValue)
 
 	var fwd_mps = transform.basis.x.x

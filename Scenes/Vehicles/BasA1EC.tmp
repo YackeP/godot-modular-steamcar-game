@@ -102,17 +102,15 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 50
 
-[node name="spedometer" type="Control" parent="Hud" node_paths=PackedStringArray("gauge", "text")]
+[node name="spedometer" type="Control" parent="Hud" node_paths=PackedStringArray("gauge")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 837.0
+offset_left = 502.0
 offset_top = 490.0
-offset_right = 837.0
+offset_right = 502.0
 offset_bottom = 490.0
 script = ExtResource("3_ghamt")
-speed0degrees = -130.0
 gauge = NodePath("gauge")
-text = NodePath("value")
 
 [node name="background" type="TextureRect" parent="Hud/spedometer"]
 layout_mode = 0
@@ -123,23 +121,20 @@ expand_mode = 1
 
 [node name="value" type="Label" parent="Hud/spedometer"]
 layout_mode = 2
-offset_left = 74.0
+offset_left = 77.0
 offset_top = 90.0
-offset_right = 114.0
+offset_right = 117.0
 offset_bottom = 113.0
 label_settings = SubResource("LabelSettings_amto1")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="gauge" type="TextureRect" parent="Hud/spedometer"]
 layout_mode = 0
 offset_left = 73.0
-offset_top = 33.0
+offset_top = 34.0
 offset_right = 113.0
-offset_bottom = 73.0
+offset_bottom = 74.0
 rotation = -2.26893
 scale = Vector2(0.1, 1)
 pivot_offset = Vector2(20, 40)
 texture = SubResource("PlaceholderTexture2D_tn65c")
 expand_mode = 1
-metadata/_edit_use_anchors_ = true
