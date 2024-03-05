@@ -47,6 +47,13 @@
 - [x] 16.12.2023 Refactor driving characteristics being derived from grid placement into using signals
 
 
+--- SHARED MODULE ---
+- [ ] Set up a pressure system for the engine
+- [ ] make the engine EXPLODE!!!!! when the pressure is too high
+- [ ] make a button that releases pressure in all boilers and makes a horn sound
+- [ ] make a GUI showing the components of the engine, with their state
+- [ ] tie this functioncality to some GUI
+
 # small tweaks and TODOs:
 - [x] 03.12.2023 Refactor the PlacedObjects from StaticBody3D to Node3D with a child Collider, so that they can have a consistent collider object
 	- used scene inheritance to make this happen
@@ -57,3 +64,4 @@
 - [ ] UI for previewing the selected component
 - [ ] UI for selecting the components
 - [ ] Changing ghost color when placement is invalid
+	- might have to investigate shaders in Godot

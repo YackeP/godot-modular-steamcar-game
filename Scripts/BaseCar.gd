@@ -9,6 +9,9 @@ class_name BaseCar
 var steer_target = 0
 @export var BASE_ENGINE_FORCE_VALUE: float = 40
 
+@export var rigidBody: RigidBody3D
+var explosionEffect = preload("res://Scenes/Explosion.tscn")
+
 var _engineForceValue: float = 40
 
 func setEngineBonusPower(bonusPower: float):
@@ -23,7 +26,17 @@ func _physics_process(delta):
 
 	var fwd_mps = transform.basis.x.x
 	steer_target = Input.get_action_strength("ui_left") - Input.get_action_strength("ui_right")
-	steer_target *= STEER_LIMIT
+	steer_target *= STEER_LIMIT	
+	
+	# ADDED by me
+	if Input.is_key_pressed(KEY_X):
+		var angle = deg_to_rad(randf_range(0, 30))
+		var impulseForce = Vector3(sin(angle), cos(angle), tan(angle)) * 500
+		rigidBody.apply_impulse(impulseForce)
+		var effect = explosionEffect.instantiate()
+		add_child(effect)
+		effect.position = position
+	
 	if Input.is_action_pressed("ui_down"):
 	# Increase engine force at low speeds to make the initial acceleration faster.
 

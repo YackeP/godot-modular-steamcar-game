@@ -75,7 +75,6 @@ color = Color(2.5, 1.5, 1, 1)
 
 [node name="Sparks" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_ypqqk")
-emitting = false
 amount = 20
 lifetime = 0.6
 explosiveness = 1.0
