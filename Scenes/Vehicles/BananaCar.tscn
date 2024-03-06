@@ -3,8 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://do15h1qi5veiv" path="res://Scenes/Vehicles/BaseCar.tscn" id="1_wow6j"]
 [ext_resource type="PackedScene" uid="uid://6nk2jccjefy2" path="res://Models/cartoon banana car.glb" id="2_edqcu"]
 
-[node name="BananaCar" node_paths=PackedStringArray("rigidBody") instance=ExtResource("1_wow6j")]
+[node name="BananaCar" node_paths=PackedStringArray("rigidBody", "explosionPlayer") instance=ExtResource("1_wow6j")]
 rigidBody = NodePath(".")
+explosionPlayer = NodePath("ExplosionPlayer")
 
 [node name="cartoon banana car" parent="." index="7" instance=ExtResource("2_edqcu")]
 transform = Transform3D(-0.007, 0, -6.11959e-10, 0, 0.007, 0, 6.11959e-10, 0, -0.007, 0, 1.34301, 0)

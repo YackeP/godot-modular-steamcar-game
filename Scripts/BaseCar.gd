@@ -10,6 +10,10 @@ var steer_target = 0
 @export var BASE_ENGINE_FORCE_VALUE: float = 40
 
 @export var rigidBody: RigidBody3D
+
+# right now this is set up to just play the explosion sound
+@export var explosionPlayer: AudioStreamPlayer3D
+
 var explosionEffect = preload("res://Scenes/Explosion.tscn")
 
 var _engineForceValue: float = 40
@@ -31,11 +35,15 @@ func _physics_process(delta):
 	# ADDED by me
 	if Input.is_key_pressed(KEY_X):
 		var angle = deg_to_rad(randf_range(0, 30))
-		var impulseForce = Vector3(sin(angle), cos(angle), tan(angle)) * 500
+		var impulseForce = Vector3(sin(angle), cos(angle), tan(angle)) * 2000
 		rigidBody.apply_impulse(impulseForce)
+		
 		var effect = explosionEffect.instantiate()
 		add_child(effect)
 		effect.position = position
+	
+		explosionPlayer.play()
+
 	
 	if Input.is_action_pressed("ui_down"):
 	# Increase engine force at low speeds to make the initial acceleration faster.
