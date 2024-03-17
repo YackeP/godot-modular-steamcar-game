@@ -22,6 +22,10 @@ func _physics_process(delta: float) -> void:
 	
 	heatBuffer.reduceResources(possibleHeatConsumed + refusedHeat)
 	steamBuffer.reduceResources(outputSocket.sendResourcesToConnectedInputSocket(steamBuffer.resourceCount))
+	
+	if steamBuffer.resourceCount > steamBuffer.resourceCapacity - 0.01:
+		GameStateEvents.engine_exploded.emit()
+		queue_free()
 
 ## This returns the number of accepted resources
 func increaseResources(heatInflow: float) -> float:

@@ -49,7 +49,7 @@
 
 --- SHARED MODULE ---
 - [ ] Set up a pressure system for the engine
-- [ ] make the engine EXPLODE!!!!! when the pressure is too high
+- [x] make the steam boiler EXPLODE!!!!! when the pressure is too high
 - [ ] make a button that releases pressure in all boilers and makes a horn sound
 - [ ] make a GUI showing the components of the engine, with their state
 - [ ] tie this functioncality to some GUI

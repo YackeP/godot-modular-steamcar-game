@@ -21,6 +21,10 @@ var _engineForceValue: float = 40
 func setEngineBonusPower(bonusPower: float):
 	_engineForceValue = BASE_ENGINE_FORCE_VALUE + (bonusPower * 1000)
 
+func _ready() -> void:
+	GameStateEvents.engine_exploded.connect(_explode)
+
+
 func _physics_process(delta):
 	var speed = linear_velocity.length()*Engine.get_frames_per_second()*delta
 	traction(speed)
@@ -34,15 +38,7 @@ func _physics_process(delta):
 	
 	# ADDED by me
 	if Input.is_key_pressed(KEY_X):
-		var angle = deg_to_rad(randf_range(0, 30))
-		var impulseForce = Vector3(sin(angle), cos(angle), tan(angle)) * 2000
-		rigidBody.apply_impulse(impulseForce)
-		
-		var effect = explosionEffect.instantiate()
-		add_child(effect)
-		effect.position = position
-	
-		explosionPlayer.play()
+		_explode()
 
 	
 	if Input.is_action_pressed("ui_down"):
@@ -75,7 +71,16 @@ func _physics_process(delta):
 		$Wheel3.wheel_friction_slip=3
 	steering = move_toward(steering, steer_target, STEER_SPEED * delta)
 
+func _explode():
+	var angle = deg_to_rad(randf_range(0, 30))
+	var impulseForce = Vector3(sin(angle), cos(angle), tan(angle)) * 2000
+	rigidBody.apply_impulse(impulseForce)
+	
+	var effect = explosionEffect.instantiate()
+	add_child(effect)
+	effect.position = position
 
+	explosionPlayer.play()
 
 func traction(speed):
 	apply_central_force(Vector3.DOWN*speed)

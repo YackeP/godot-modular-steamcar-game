@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Logger="*res://addons/godot-logger-master/logger.gd"
 DebugSettingsNode="*res://Scripts/GlobalSingletons/DebugSettings.gd"
+GameStateEvents="*res://Scripts/GlobalSingletons/GameStateEvents.gd"
 
 [debug]
 
