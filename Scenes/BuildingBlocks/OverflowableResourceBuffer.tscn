@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3u1fucji6t2m"]
+
+[ext_resource type="PackedScene" uid="uid://csk3xje56hlfk" path="res://Scenes/BuildingBlocks/ResourceBuffer.tscn" id="1_i42e1"]
+[ext_resource type="Script" path="res://Scripts/Grid Objects/OverflowableResourceBuffer.gd" id="2_i35km"]
+
+[node name="ResourceBuffer" instance=ExtResource("1_i42e1")]
+script = ExtResource("2_i35km")
+overflowLimit = 0.0

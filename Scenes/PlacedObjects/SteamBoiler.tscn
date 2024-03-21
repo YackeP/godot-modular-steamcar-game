@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://diuilli57etc0"]
+[gd_scene load_steps=10 format=3 uid="uid://diuilli57etc0"]
 
 [ext_resource type="PackedScene" uid="uid://3aenfxjethb7" path="res://Models/PipeWorksPack/Meshes/cylo_tall.glb" id="1_4l6jb"]
 [ext_resource type="PackedScene" uid="uid://cce1gdkkskh77" path="res://Scenes/PlacedObjects/GridComponentBase.tscn" id="1_6o4vt"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d0hp2qe3egj44" path="res://Scenes/BuildingBlocks/OutputSocket.tscn" id="4_12q4f"]
 [ext_resource type="PackedScene" uid="uid://c2fyije6f5u0n" path="res://Scenes/BuildingBlocks/DebugNode.tscn" id="6_g3pkd"]
 [ext_resource type="PackedScene" uid="uid://csk3xje56hlfk" path="res://Scenes/BuildingBlocks/ResourceBuffer.tscn" id="7_8vruk"]
+[ext_resource type="PackedScene" uid="uid://b3u1fucji6t2m" path="res://Scenes/BuildingBlocks/OverflowableResourceBuffer.tscn" id="9_esdh3"]
 
 [node name="SteamBoiler" node_paths=PackedStringArray("outputSocket", "heatBuffer", "steamBuffer") instance=ExtResource("1_6o4vt")]
 script = ExtResource("2_savo2")
@@ -46,9 +47,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.27983, 0)
 [node name="HeatBuffer" parent="." index="7" instance=ExtResource("7_8vruk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28048, 0.821798)
 resourceType = 1
-_resourceCapacity = 5.0
 
-[node name="SteamBuffer" parent="." index="8" instance=ExtResource("7_8vruk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19194, -0.600423)
+[node name="SteamBuffer" parent="." index="8" instance=ExtResource("9_esdh3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3135, -0.583792)
+overflowLimit = 9.0
 resourceType = 2
-_resourceCapacity = 5.0

@@ -8,8 +8,10 @@ class_name SteamBoiler
 @export var outputSocket: OutputSocket
 
 @export var heatBuffer: ResourceBuffer
-@export var steamBuffer: ResourceBuffer
+@export var steamBuffer: OverflowableResourceBuffer
 
+func _ready() -> void:
+	steamBuffer.overflow_limit_reached.connect(explode)
 
 func _physics_process(delta: float) -> void:
 	# for now, let's assume 1-1 heat-steam transfer ratio	var heatTransferedToSteam = min(heat, heatToSteamTransferSpeed * delta)
@@ -30,3 +32,10 @@ func _physics_process(delta: float) -> void:
 ## This returns the number of accepted resources
 func increaseResources(heatInflow: float) -> float:
 	return heatBuffer.increaseResources(heatInflow)
+
+func explode():
+	#if steamBuffer.resourceCount > steamBuffer.resourceCapacity - 0.01:
+	Logger.warn("Steam Boiler exploded!")
+	GameStateEvents.engine_exploded.emit()
+	queue_free()
+	
