@@ -1,8 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://bp06vsw8p3scf"]
+[gd_scene load_steps=3 format=3 uid="uid://bp06vsw8p3scf"]
+
+[ext_resource type="Script" path="res://Scenes/UI/EngineOutputSocketPanel.gd" id="1_k7jip"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_an0ut"]
 bg_color = Color(0.831373, 0.470588, 0.592157, 1)
 
-[node name="Panel1" type="Panel"]
+[node name="Panel" type="Panel"]
 custom_minimum_size = Vector2(40, 40)
+offset_right = 40.0
+offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_an0ut")
+script = ExtResource("1_k7jip")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 3

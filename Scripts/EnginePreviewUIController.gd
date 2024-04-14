@@ -63,6 +63,9 @@ func _ready() -> void:
 		if(panelScene):
 			var engineTile: Panel = panelScene.instantiate()
 			add_child(engineTile)
+# FIXME: ugly, clunky, and not type-safe
+			if(engineTile.has_method("registerObject")):
+				engineTile.registerObject(space)
 			engineTile.position = _calulatePanelSpace(space.position)
 
 func _handleComponentAdded(component: GridComponent):
