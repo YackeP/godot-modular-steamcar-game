@@ -1,6 +1,7 @@
 extends Node3D
 
 class_name GridComponent
+# is there any way of having an enum field which specifies, which type of the component this is?
 
 var occupiedSpaces: Array[GridSpace]
 

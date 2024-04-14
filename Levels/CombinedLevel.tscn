@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnixhpiq7tdav"]
 
 [ext_resource type="Script" path="res://Scripts/GameStateController.gd" id="1_doy7m"]
-[ext_resource type="PackedScene" uid="uid://da73j8d253lys" path="res://Levels/DrivingTrack.tscn" id="2_v7pyw"]
+[ext_resource type="PackedScene" uid="uid://da73j8d253lys" path="res://Levels/DrivingLevel.tscn" id="2_v7pyw"]
 [ext_resource type="PackedScene" uid="uid://b6c8qvi412c8w" path="res://Levels/GridPlacementLevel.tscn" id="3_0hgh6"]
 
 [node name="CombinedLevel" type="Node3D"]

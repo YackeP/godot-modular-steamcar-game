@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6c8qvi412c8w"]
+[gd_scene load_steps=6 format=3 uid="uid://b6c8qvi412c8w"]
 
 [ext_resource type="Script" path="res://Scripts/GridPlacementController.gd" id="1_r2yk8"]
 [ext_resource type="PackedScene" uid="uid://jmr48tafi0tm" path="res://Scenes/BuildingBlocks/GridSpace.tscn" id="2_jqtlm"]
 [ext_resource type="PackedScene" uid="uid://ceutc06ahdbxi" path="res://Scenes/BuildingBlocks/WallInputSocket.tscn" id="3_p4qu7"]
+[ext_resource type="Script" path="res://Scripts/EnginePreviewUIController.gd" id="4_5ga0k"]
+[ext_resource type="PackedScene" uid="uid://b6l8uwxlfbpap" path="res://Scenes/UI/EngineTilePanel.tscn" id="5_okxq1"]
 
 [node name="GridPlacementController" type="Node3D" node_paths=PackedStringArray("_camera", "_inputSockets")]
 script = ExtResource("1_r2yk8")
@@ -13,7 +15,7 @@ _inputSockets = [NodePath("GridMap/WallInputSocket"), NodePath("GridMap/WallInpu
 transform = Transform3D(-0.384743, 0.851667, -0.35586, -0.492764, 0.136481, 0.859393, 0.780485, 0.506, 0.367161, -2.74391, 1.63777, 6.85233)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.319753, 0.644393, -0.694633, -0.121772, 0.75499, 0.644331, 0.939643, -0.12144, 0.319879, -4.43322, 3.36402, 2.92911)
+transform = Transform3D(-0.93296, 0.134494, -0.333912, -0.121772, 0.75499, 0.644331, 0.338759, 0.641796, -0.687998, -2.6503, 3.82834, -1.90905)
 projection = 1
 current = true
 size = 5.61
@@ -75,3 +77,19 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 
 
 [node name="WallInputSocket3" parent="GridMap" instance=ExtResource("3_p4qu7")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 2)
+
+[node name="Placeables" type="Node3D" parent="."]
+
+[node name="EngineUI" type="CanvasLayer" parent="."]
+
+[node name="EnginePreviewUI" type="Container" parent="EngineUI"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = -202.0
+offset_right = 67.0
+offset_bottom = -162.0
+grow_vertical = 0
+script = ExtResource("4_5ga0k")
+engineTilePanel = ExtResource("5_okxq1")

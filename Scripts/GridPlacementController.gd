@@ -3,18 +3,25 @@ extends Node3D
 class_name GridPlacementController
 
 signal powerOutputted(power: float)
+signal component_added(component: GridComponent)
+signal component_removed(component: GridComponent)
 
 const _RAY_LENGTH = 1000
 const _GRID_SLOT_LAYER_MASK := 0b00000000_00000000_00000000_00010000 # layer 5
 const _GRID_COMPONENT_LAYER_MASK := 0b00000000_00000000_00000000_00001000 # layer 4
+@onready 
+var _placeablesContainer = $Placeables
+
 var _PLACEABLE_OBJECTS: Array[PlaceableObjectDefinition] = [
 	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/CoalFurnace.tscn"),preload("res://Scenes/PlacedObjectGhosts/CoalFurnaceGhost.tscn")),
 	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/SteamBoiler.tscn"),preload("res://Scenes/PlacedObjectGhosts/SteamBoilerGhost.tscn")),
 	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/SteamPiston.tscn"),preload("res://Scenes/PlacedObjectGhosts/SteamPistonGhost.tscn"))
 ]
 
-@export var _camera: Camera3D
-@export var _inputSockets: Array[WallInputSocket]
+@export 
+var _camera: Camera3D
+@export 
+var _inputSockets: Array[WallInputSocket]
 
 # TODO: implement this using signals -> whenever any input gets changed, it sends a signal to here
 #	here, handle the input by updating some value, and then sending the total value as a message that gets received by the driving controller
@@ -47,7 +54,6 @@ func _physics_process(delta) -> void:
 			elif _houseGhost != null:
 				_removeGhost()
 	
-	# FIXME: use signals instead - maybe register them in _ready() by filtering all the children?
 	totalEnginePower = 0
 	for socket in _inputSockets:
 		totalEnginePower += socket.power
@@ -58,48 +64,13 @@ func _input(event):
 	if _enabled:
 		if event is InputEventKey:
 			var pressedNumber = _get_pressed_number(event)
-			if (pressedNumber >= 0 and pressedNumber < _PLACEABLE_OBJECTS.size()):
-				_selectedPlaceable = _PLACEABLE_OBJECTS[pressedNumber]
-				_removeGhost()
-				_createGhost(_selectedPlaceable['ghost'])
+			_changeSelectedPlaceable(pressedNumber)
 		
 		elif event is InputEventMouseButton and event.pressed:
 			if event.button_index == 1 and _selectedPlaceable != null:
 				_tryPlaceGridComponent()
 			elif event.button_index == 2:
 				_tryDeleteGridComponent()
-
-func _removeGhost() -> void:
-	if( _houseGhost != null):
-		_houseGhost.queue_free()
-		remove_child(_houseGhost)
-
-func _createGhost(ghost: PackedScene) -> void:
-	var ghostInstance = ghost.instantiate()
-	_houseGhost = ghostInstance
-	add_child(ghostInstance)
-
-func _createGridComponent(object: PackedScene, pos: Vector3, rot: Vector3, gridSpaces: Array[GridSpace]) -> void:
-	var objectInstance: GridComponent = object.instantiate()
-	add_child(objectInstance)
-	objectInstance.setOccupiedSpaces(gridSpaces)
-	objectInstance.position = getNearestGridPosition(pos)
-	objectInstance.rotation = rot
-
-func _tryPlaceGridComponent():
-	var hitGridSpace = getGridSpaceHitByMouse()
-	if hitGridSpace != null:
-		if _houseGhost.overlapsAllSlots():
-			for gridSpace in _houseGhost.getAllOverlappedSlots():
-				gridSpace.takeSpace()
-			_createGridComponent(_selectedPlaceable.object, hitGridSpace.position, _houseGhost.rotation, _houseGhost.getAllOverlappedSlots())
-		else:
-			Logger.info("Can not place object, not all slots are overlapping!")
-
-func _tryDeleteGridComponent():
-	var hitGridComponent = getGridComponentHitByMouse()
-	if hitGridComponent != null:
-		getGridComponentHitByMouse().onPress()
 
 func getNearestGridPosition(rawPosition: Vector3) -> Vector3:
 	return Vector3(round(rawPosition.x), rawPosition.y, round(rawPosition.z))
@@ -124,9 +95,48 @@ func getGridComponentHitByMouse() -> GridComponent:
 	if !objectHitByMouse.is_empty() && objectHitByMouse['collider'] is GridSpace:
 		return objectHitByMouse['collider'].get_parent() as GridComponent
 	return null
-	
+
+func _changeSelectedPlaceable(index: int):
+	if (index >= 0 and index < _PLACEABLE_OBJECTS.size()):
+		_selectedPlaceable = _PLACEABLE_OBJECTS[index]
+		_removeGhost()
+		_createGhost(_selectedPlaceable['ghost'])
+
+func _removeGhost() -> void:
+	if( _houseGhost != null):
+		_houseGhost.queue_free()
+		remove_child(_houseGhost)
+
+func _createGhost(ghost: PackedScene) -> void:
+	var ghostInstance = ghost.instantiate()
+	_houseGhost = ghostInstance
+	add_child(ghostInstance)
+
+func _createGridComponent(object: PackedScene, pos: Vector3, rot: Vector3, gridSpaces: Array[GridSpace]) -> void:
+	var objectInstance: GridComponent = object.instantiate()
+	_placeablesContainer.add_child(objectInstance)
+	objectInstance.setOccupiedSpaces(gridSpaces)
+	objectInstance.position = getNearestGridPosition(pos)
+	objectInstance.rotation = rot
+
+func _tryPlaceGridComponent():
+	var hitGridSpace = getGridSpaceHitByMouse()
+	if hitGridSpace != null:
+		if _houseGhost.overlapsAllSlots():
+			for gridSpace in _houseGhost.getAllOverlappedSlots():
+				gridSpace.takeSpace()
+			_createGridComponent(_selectedPlaceable.object, hitGridSpace.position, _houseGhost.rotation, _houseGhost.getAllOverlappedSlots())
+		else:
+			Logger.info("Can not place object, not all slots are overlapping!")
+
+func _tryDeleteGridComponent():
+	var hitGridComponent = getGridComponentHitByMouse()
+	if hitGridComponent != null:
+		getGridComponentHitByMouse().onPress()
+
+
 func _get_pressed_number(event: InputEventKey):
-	return int(event.keycode) - 49 # if pressed     key 0 -> -1;    key 1 -> 0;		key 2 -> 1;
+	return clamp(int(event.keycode) - 49, 0, 10) # if pressed     key 0 -> -1;    key 1 -> 0;		key 2 -> 1;
 
 class PlaceableObjectDefinition:
 	var object: PackedScene

@@ -6,6 +6,7 @@ class_name GameStateController
 
 @export var drivingWorldController: DrivingWorldController
 @export var gridPlacementController: GridPlacementController
+@export var enginePreviewUI: EnginePreviewUIController
 
 var _gameState: GameState = GameState.DRIVING
 
@@ -36,8 +37,14 @@ func _input(event):
 				drivingWorldController.enable()
 				gridPlacementController.disable()
 
+func showEnginePreview():
+	enginePreviewUI.show()
+
+
 func _setCarPower(power: float):
 	drivingWorldController.setEngineBonusPower(power)
+	
+
 
 enum GameState {
 	UNDEFINED,
