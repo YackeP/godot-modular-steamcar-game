@@ -3,7 +3,9 @@ extends Control
 class_name EnginePreviewUIController
 
 @export
-var engineTilePanel:PackedScene
+var engineTilePanel: PackedScene
+@export
+var engineOutputSocketPanel: PackedScene
 
 var panelMaring: int = 10
 
@@ -57,9 +59,11 @@ func _ready() -> void:
 	print("topRightWorld: ", topRightWorld)
 	
 	for space: Node3D in gridSpaces.get_children():
-		var engineTile: Panel = engineTilePanel.instantiate()
-		add_child(engineTile)
-		engineTile.position = _calulatePanelSpace(space.position)
+		var panelScene = _getPanelScene(space)
+		if(panelScene):
+			var engineTile: Panel = panelScene.instantiate()
+			add_child(engineTile)
+			engineTile.position = _calulatePanelSpace(space.position)
 
 func _handleComponentAdded(component: GridComponent):
 	pass
@@ -67,10 +71,15 @@ func _handleComponentAdded(component: GridComponent):
 func _handleComponentRemoved(component: GridComponent):
 	pass
 	
+func _getPanelScene(gridSpace: Node3D) -> PackedScene:
+	# FIXME: hardcoded class name to scene binding
+	if (gridSpace is WallInputSocket):
+		return engineOutputSocketPanel
+	if (gridSpace is GridSpace):
+		return engineTilePanel
+	return null
+
+	
 func _calulatePanelSpace(worldSpace: Vector3) -> Vector2:
 	# can probably add the size of the panel itself to the Y coordinate to make it lower
 	return Vector2(worldSpace.x + leftOffset, worldSpace.z - bottomOffset) * 50
-
-func _getPanel(panelSpace: Vector2):
-	# TODO
-	pass
