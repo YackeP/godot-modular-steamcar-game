@@ -10,8 +10,8 @@ var overflowCounter: Label = $OverflowPercentage
 func _process(_delta: float):
 # FIXME: this knows too much about the boiler and it's resource buffer
 	if (boiler != null):
-		steamCounter.text = "%.2f" % boiler._steamBuffer.resourceCount
-		overflowCounter.text = "Ovfl%.2f" %  (boiler._steamBuffer.resourceCount / boiler._steamBuffer.overflowLimit)
+		steamCounter.text = "S: %.2f" % boiler.getSteamLevel()
+		overflowCounter.text = "boom: %.2f" %  boiler.overflowExplodiness
 	
 func registerObject(object: Node3D):
 	if object is SteamBoiler:
@@ -19,6 +19,6 @@ func registerObject(object: Node3D):
 
 func destroyRepresentingUI(object: Node3D):
 	if object == boiler:
-		boiler = null
+		boiler = null # this is needed to remove the reference so that the object can be freed
 		queue_free()
 	

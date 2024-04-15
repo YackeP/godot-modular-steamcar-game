@@ -69,6 +69,7 @@
 	- used scene inheritance to make this happen
 - [x] 03.12.2023 Make the component ghosts use SceneInheritance as well
 - [ ] Refactor the engine preview UI
+- [ ] Reorganize the files and directories to utilize colocation more effectively
 
 # nice to have
 - [ ] Spedometer graphic

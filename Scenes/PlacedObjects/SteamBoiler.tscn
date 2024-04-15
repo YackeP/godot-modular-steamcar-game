@@ -17,6 +17,8 @@ heatConsumptionSpeed = 0.9
 _outputSocket = NodePath("Output Socket")
 _heatBuffer = NodePath("HeatBuffer")
 _steamBuffer = NodePath("SteamBuffer")
+explodinessRaiseRate = 30.0
+explodinessDecayRate = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collider" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.439836, 0)
