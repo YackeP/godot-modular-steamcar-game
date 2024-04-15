@@ -3,7 +3,7 @@ extends Node3D
 class_name GridPlacementController
 
 signal powerOutputted(power: float)
-signal component_added(component: GridComponent)
+signal component_added(component: GridComponent, definition: EngineComponentDefinition)
 signal component_removed(component: GridComponent)
 
 const _RAY_LENGTH = 1000
@@ -107,13 +107,13 @@ func _createGhost(ghost: PackedScene) -> void:
 	_houseGhost = ghostInstance
 	add_child(ghostInstance)
 
-func _createGridComponent(object: PackedScene, pos: Vector3, rot: Vector3, gridSpaces: Array[GridSpace]) -> void:
-	var objectInstance: GridComponent = object.instantiate()
+func _createGridComponent(gridComponentDefinition: EngineComponentDefinition, pos: Vector3, rot: Vector3, gridSpaces: Array[GridSpace]) -> void:
+	var objectInstance: GridComponent = gridComponentDefinition.gridComponent.instantiate()
 	_placeablesContainer.add_child(objectInstance)
 	objectInstance.setOccupiedSpaces(gridSpaces)
 	objectInstance.position = getNearestGridPosition(pos)
 	objectInstance.rotation = rot
-	component_added.emit(objectInstance)
+	component_added.emit(objectInstance, gridComponentDefinition)
 	objectInstance.initialize(self)
 
 func _tryPlaceGridComponent():
@@ -122,7 +122,7 @@ func _tryPlaceGridComponent():
 		if _houseGhost.overlapsAllSlots():
 			for gridSpace in _houseGhost.getAllOverlappedSlots():
 				gridSpace.takeSpace()
-			_createGridComponent(_selectedPlaceable.gridComponent, hitGridSpace.position, _houseGhost.rotation, _houseGhost.getAllOverlappedSlots())
+			_createGridComponent(_selectedPlaceable,  hitGridSpace.position, _houseGhost.rotation, _houseGhost.getAllOverlappedSlots())
 		else:
 			Logger.info("Can not place object, not all slots are overlapping!")
 
@@ -135,3 +135,4 @@ func _tryDeleteGridComponent():
 
 func _get_pressed_number(event: InputEventKey):
 	return clamp(int(event.keycode) - 49, 0, 10) # if pressed     key 0 -> -1;    key 1 -> 0;		key 2 -> 1;
+	

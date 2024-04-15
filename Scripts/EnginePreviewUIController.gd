@@ -67,15 +67,14 @@ func _ready() -> void:
 				engineTile.registerObject(space)
 			engineTile.position = _calulatePanelSpace(space.position)
 
-func _handleComponentAdded(component: GridComponent):
+func _handleComponentAdded(component: GridComponent, componentDefinition: EngineComponentDefinition):
 	# TODO: add support for more components
 	# TODO: make the component into custom resources, which hold the UI, the ghost, and the component
-	if component is SteamBoiler:
-		var boilerPreviewScene = preload("res://Scenes/UI/EnginePreview/BoilerUIPreview.tscn")
-		var boilerPreview = boilerPreviewScene.instantiate()
-		add_child(boilerPreview)
-		boilerPreview.registerObject(component)
-		boilerPreview.position = _calulatePanelSpace(component.position)
+	if componentDefinition.enginePreviewUIElement != null:
+		var preview = componentDefinition.enginePreviewUIElement.instantiate()
+		add_child(preview)
+		preview.registerObject(component)
+		preview.position = _calulatePanelSpace(component.position)
 
 func _handleComponentRemoved(component: GridComponent):
 	# FIXME: not type-safe
@@ -89,7 +88,8 @@ func _getPanelScene(gridSpace: Node3D) -> PackedScene:
 		return engineTilePanel
 	return null
 
-	
+
+# TODO/FIXME: handle rotation
 func _calulatePanelSpace(worldSpace: Vector3) -> Vector2:
 	# can probably add the size of the panel itself to the Y coordinate to make it lower
 	return Vector2(worldSpace.x + leftOffset, worldSpace.z - bottomOffset) * 50
