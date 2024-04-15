@@ -15,7 +15,7 @@ func _enter_tree():
 func addTextValueGetter(getter: Callable) -> void:
 	textValueGetters.append(getter)
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta) -> void:
 	var text = ""
 	for getter in textValueGetters:
 		text += getter.call() + "\n"

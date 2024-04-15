@@ -10,12 +10,12 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_gavby"]
 size = Vector3(0.7, 0.599028, 0.7)
 
-[node name="CoalFurnace" node_paths=PackedStringArray("outputSockets", "resourceBuffer") instance=ExtResource("1_200ii")]
+[node name="CoalFurnace" node_paths=PackedStringArray("_outputSockets", "_resourceBuffer") instance=ExtResource("1_200ii")]
 script = ExtResource("1_0p6ty")
 heatGeneratedPerSecond = 1.0
 heatOutputSpeed = 0.75
-outputSockets = [NodePath("Output Socket"), NodePath("Output Socket2"), NodePath("Output Socket3"), NodePath("Output Socket4")]
-resourceBuffer = NodePath("ResourceBuffer")
+_outputSockets = [NodePath("Output Socket"), NodePath("Output Socket2"), NodePath("Output Socket3"), NodePath("Output Socket4")]
+_resourceBuffer = NodePath("HeatBuffer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collider" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.292902, 0)
@@ -42,6 +42,6 @@ outputType = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 outputType = 1
 
-[node name="ResourceBuffer" parent="." index="7" instance=ExtResource("6_cf4iw")]
+[node name="HeatBuffer" parent="." index="7" instance=ExtResource("6_cf4iw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 resourceType = 1

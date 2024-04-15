@@ -8,8 +8,8 @@ class_name SteamPiston
 # power capacity is just 0, it makes no sense to store the produced energy, it is immidiately transferred
 # this will only accept as much as it can, and if it's too high, it may break down
 
-@export var outputSocket: OutputSocket
-@export var steamBuffer: ResourceBuffer
+@export var _outputSocket: OutputSocket
+@export var _steamBuffer: ResourceBuffer
 
 # TODO: investigate about how pistons work, what happens if not enough steam or too much steam gets input.
 # for now: less steam == less power, just a normal linear function
@@ -19,19 +19,19 @@ class_name SteamPiston
 
 func _ready() -> void:
 	# these 2 lines repeat in every debugNode clause -> maybe we can extract it somewhere?
-	assert(outputSocket != null, "Steam piston requires an OutputSocket!")
+	assert(_outputSocket != null, "Steam piston requires an OutputSocket!")
 
 func _physics_process(delta: float) -> void:
 	# for now, let's assume 1-1 steam-power transfer ratio and that we use up all the steam
 	var maxSteamConsumed = steamConsumptionSpeed * delta
-	var possibleSteamConsumed = min(maxSteamConsumed, steamBuffer.resourceCount)
+	var possibleSteamConsumed = min(maxSteamConsumed, _steamBuffer.resourceCount)
 	
 	var powerProduced = possibleSteamConsumed * steamToPowerTransferRatio
 	# we don't reject any power, we just accept it all
 	
-	steamBuffer.reduceResources(possibleSteamConsumed)
-	outputSocket.sendResourcesToConnectedInputSocket(powerProduced)
+	_steamBuffer.reduceResources(possibleSteamConsumed)
+	_outputSocket.sendResourcesToConnectedInputSocket(powerProduced)
 
 ## This returns the value of accepted resources
 func increaseResources(steamInflow: float) -> float:
-	return steamBuffer.increaseResources(steamInflow)
+	return _steamBuffer.increaseResources(steamInflow)

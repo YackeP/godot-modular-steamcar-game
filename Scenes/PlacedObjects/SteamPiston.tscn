@@ -10,13 +10,13 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_3p3bg"]
 size = Vector3(1, 1.47607, 2.08594)
 
-[node name="SteamPiston" node_paths=PackedStringArray("outputSocket", "steamBuffer") instance=ExtResource("1_f881l")]
+[node name="SteamPiston" node_paths=PackedStringArray("_outputSocket", "_steamBuffer") instance=ExtResource("1_f881l")]
 script = ExtResource("2_svsrl")
 steamCapacity = 3.0
 steamToPowerTransferRatio = 0.9
 steamConsumptionSpeed = 0.9
-outputSocket = NodePath("Output Socket")
-steamBuffer = NodePath("SteamBuffer")
+_outputSocket = NodePath("Output Socket")
+_steamBuffer = NodePath("SteamBuffer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collider" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.238037, 0.542969)
@@ -56,4 +56,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34037, 0)
 [node name="SteamBuffer" parent="." index="7" instance=ExtResource("5_186xm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12802, 0.542177)
 resourceType = 2
-_resourceCapacity = 1.0

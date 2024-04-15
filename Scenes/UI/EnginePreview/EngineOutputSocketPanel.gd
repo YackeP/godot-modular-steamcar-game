@@ -5,7 +5,7 @@ var socket: WallInputSocket
 @onready
 var label: Label = $Label
 
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	if (socket):
 		label.text = "%.2f" % (socket.power * 100)
 	else:

@@ -48,24 +48,27 @@
 
 
 --- SHARED MODULE ---
-- [ ] Set up a pressure system for the engine
+- [x] 05.03.2024 make the car EXPLODE!!!!! on command
+- [x] 18.03.2024 Set up a pressure system for the steam boiler and make the steam boiler EXPLODE!!!!! when the pressure is too high
 	- Is the resource overflow causing mall efects just something that happens to the steam boiler?
 		- Nah, this could be something that's also applicable to other systems:
 				- Heat furnace -> Melt
 				- Steam mover -> Go out of whack
 				- Steam piston -> get overpowered, or malfunction (positive effect is interesting)
 		- At the same time, this might not be wanted in all the buffers
-		- SOLUTION: make a child subclass, and a new inherited scene for the Overflowable Boiler
-- [x] make the steam boiler EXPLODE!!!!! when the pressure is too high
-- [ ] make a button that releases pressure in all boilers and makes a horn sound
+		- [x] 21.03.2024 SOLUTION: make a child subclass, and a new inherited scene for the Overflowable Boiler
 - [ ] make a GUI showing the components of the engine, with their state
-- [ ] tie this functionality to some GUI
+	- [x] 14.04.2024 Show all the engine tiles in the UI
+	- [x] 15.05.2024 Show the boiler with it's state in the UI
+- [ ] make a button that releases pressure in all boilers and makes a horn sound
+	- [ ] make releasing the steam create a steam particle
 
 
 # small tweaks and TODOs:
 - [x] 03.12.2023 Refactor the PlacedObjects from StaticBody3D to Node3D with a child Collider, so that they can have a consistent collider object
 	- used scene inheritance to make this happen
 - [x] 03.12.2023 Make the component ghosts use SceneInheritance as well
+- [ ] Refactor the engine preview UI
 
 # nice to have
 - [ ] Spedometer graphic

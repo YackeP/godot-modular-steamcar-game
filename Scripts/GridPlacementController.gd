@@ -44,7 +44,7 @@ func enable():
 func disable():
 	pass
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	if _enabled:
 		if _selectedPlaceable != null:
 			var hitGridSpace = getGridSpaceHitByMouse()
@@ -71,7 +71,8 @@ func _input(event):
 			if event.button_index == 1 and _selectedPlaceable != null:
 				_tryPlaceGridComponent()
 			elif event.button_index == 2:
-				_tryDeleteGridComponent()
+				pass
+				#_tryDeleteGridComponent()
 
 func getNearestGridPosition(rawPosition: Vector3) -> Vector3:
 	return Vector3(round(rawPosition.x), rawPosition.y, round(rawPosition.z))
@@ -120,7 +121,7 @@ func _createGridComponent(object: PackedScene, pos: Vector3, rot: Vector3, gridS
 	objectInstance.position = getNearestGridPosition(pos)
 	objectInstance.rotation = rot
 	component_added.emit(objectInstance)
-	objectInstance.registerController(self)
+	objectInstance.initialize(self)
 
 func _tryPlaceGridComponent():
 	var hitGridSpace = getGridSpaceHitByMouse()

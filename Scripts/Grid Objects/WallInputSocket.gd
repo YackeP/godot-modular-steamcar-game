@@ -12,6 +12,6 @@ func _ready() -> void:
 		var debugNode: DebugNode = $DebugNode
 		debugNode.addTextValueGetter(func():return "Power:%.2f" % (power * 100))
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	power = resourceBuffer.resourceCount
 	resourceBuffer.updateResources(0.0)
