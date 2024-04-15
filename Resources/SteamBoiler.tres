@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EngineComponentDefinition" load_steps=5 format=3 uid="uid://deiwpa1tjjxt8"]
+
+[ext_resource type="PackedScene" uid="uid://lpjuu4da71uc" path="res://Scenes/UI/EnginePreview/BoilerUIPreview.tscn" id="1_ppbo4"]
+[ext_resource type="PackedScene" uid="uid://diuilli57etc0" path="res://Scenes/PlacedObjects/SteamBoiler.tscn" id="2_tebq0"]
+[ext_resource type="PackedScene" uid="uid://1prodhtvys7c" path="res://Scenes/PlacedObjectGhosts/SteamBoilerGhost.tscn" id="3_vc31o"]
+[ext_resource type="Script" path="res://Resources/EngineComponentDefinition.gd" id="4_4t6r3"]
+
+[resource]
+script = ExtResource("4_4t6r3")
+placementGhost = ExtResource("3_vc31o")
+gridComponent = ExtResource("2_tebq0")
+enginePreviewUIElement = ExtResource("1_ppbo4")

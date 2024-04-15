@@ -1,14 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6c8qvi412c8w"]
+[gd_scene load_steps=10 format=3 uid="uid://b6c8qvi412c8w"]
 
 [ext_resource type="Script" path="res://Scripts/GridPlacementController.gd" id="1_r2yk8"]
 [ext_resource type="PackedScene" uid="uid://jmr48tafi0tm" path="res://Scenes/BuildingBlocks/GridSpace.tscn" id="2_jqtlm"]
+[ext_resource type="Resource" uid="uid://deiwpa1tjjxt8" path="res://Resources/SteamBoiler.tres" id="2_qrst6"]
+[ext_resource type="Resource" uid="uid://clxkclpk5b8bv" path="res://Resources/CoalFurnace.tres" id="3_72sjc"]
 [ext_resource type="PackedScene" uid="uid://ceutc06ahdbxi" path="res://Scenes/BuildingBlocks/WallInputSocket.tscn" id="3_p4qu7"]
 [ext_resource type="Script" path="res://Scripts/EnginePreviewUIController.gd" id="4_5ga0k"]
+[ext_resource type="Resource" uid="uid://0f1pj0jus25t" path="res://Resources/SteamPison.tres" id="4_41v7h"]
 [ext_resource type="PackedScene" uid="uid://b6l8uwxlfbpap" path="res://Scenes/UI/EnginePreview/EngineTilePanel.tscn" id="5_okxq1"]
 [ext_resource type="PackedScene" uid="uid://bp06vsw8p3scf" path="res://Scenes/UI/EnginePreview/EngineOutputSocketPanel.tscn" id="6_1y2qa"]
 
 [node name="GridPlacementController" type="Node3D" node_paths=PackedStringArray("_camera", "_inputSockets")]
 script = ExtResource("1_r2yk8")
+_placeableObjects = Array[Resource("res://Resources/EngineComponentDefinition.gd")]([ExtResource("2_qrst6"), ExtResource("3_72sjc"), ExtResource("4_41v7h")])
 _camera = NodePath("Camera3D")
 _inputSockets = [NodePath("GridMap/WallInputSocket"), NodePath("GridMap/WallInputSocket2"), NodePath("GridMap/WallInputSocket3")]
 

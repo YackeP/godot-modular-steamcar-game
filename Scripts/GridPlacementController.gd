@@ -10,19 +10,9 @@ const _RAY_LENGTH = 1000
 const _GRID_SLOT_LAYER_MASK := 0b00000000_00000000_00000000_00010000 # layer 5
 const _GRID_COMPONENT_LAYER_MASK := 0b00000000_00000000_00000000_00001000 # layer 4
 
-@onready 
-var _placeablesContainer = $Placeables
-
-var _PLACEABLE_OBJECTS: Array[PlaceableObjectDefinition] = [
-	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/CoalFurnace.tscn"),preload("res://Scenes/PlacedObjectGhosts/CoalFurnaceGhost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/SteamBoiler.tscn"),preload("res://Scenes/PlacedObjectGhosts/SteamBoilerGhost.tscn")),
-	PlaceableObjectDefinition.new(preload("res://Scenes/PlacedObjects/SteamPiston.tscn"),preload("res://Scenes/PlacedObjectGhosts/SteamPistonGhost.tscn"))
-]
-
-@export 
-var _camera: Camera3D
-@export 
-var _inputSockets: Array[WallInputSocket]
+@export var _placeableObjects: Array[EngineComponentDefinition]
+@export var _camera: Camera3D
+@export var _inputSockets: Array[WallInputSocket]
 
 # TODO: implement this using signals -> whenever any input gets changed, it sends a signal to here
 #	here, handle the input by updating some value, and then sending the total value as a message that gets received by the driving controller
@@ -30,8 +20,11 @@ var totalEnginePower: float = 0.0
 
 var _enabled: bool = false
 
-var _selectedPlaceable: PlaceableObjectDefinition
+var _selectedPlaceable: EngineComponentDefinition
 var _houseGhost: PlacementGhost
+
+@onready 
+var _placeablesContainer = $Placeables
 
 #func _init() -> void:
 #	Logger.set_default_output_level(1) # debugging, need to set this more properly
@@ -50,7 +43,7 @@ func _physics_process(_delta) -> void:
 			var hitGridSpace = getGridSpaceHitByMouse()
 			if hitGridSpace != null:
 				if _houseGhost == null:
-					_createGhost(_selectedPlaceable.ghost)
+					_createGhost(_selectedPlaceable.placementGhost)
 				_houseGhost.position = getNearestGridPosition(hitGridSpace.position)
 			elif _houseGhost != null:
 				_removeGhost()
@@ -99,10 +92,10 @@ func getGridComponentHitByMouse() -> GridComponent:
 	return null
 
 func _changeSelectedPlaceable(index: int):
-	if (index >= 0 and index < _PLACEABLE_OBJECTS.size()):
-		_selectedPlaceable = _PLACEABLE_OBJECTS[index]
+	if (index >= 0 and index < _placeableObjects.size()):
+		_selectedPlaceable = _placeableObjects[index]
 		_removeGhost()
-		_createGhost(_selectedPlaceable['ghost'])
+		_createGhost(_selectedPlaceable.placementGhost)
 
 func _removeGhost() -> void:
 	if( _houseGhost != null):
@@ -129,7 +122,7 @@ func _tryPlaceGridComponent():
 		if _houseGhost.overlapsAllSlots():
 			for gridSpace in _houseGhost.getAllOverlappedSlots():
 				gridSpace.takeSpace()
-			_createGridComponent(_selectedPlaceable.object, hitGridSpace.position, _houseGhost.rotation, _houseGhost.getAllOverlappedSlots())
+			_createGridComponent(_selectedPlaceable.gridComponent, hitGridSpace.position, _houseGhost.rotation, _houseGhost.getAllOverlappedSlots())
 		else:
 			Logger.info("Can not place object, not all slots are overlapping!")
 
@@ -142,11 +135,3 @@ func _tryDeleteGridComponent():
 
 func _get_pressed_number(event: InputEventKey):
 	return clamp(int(event.keycode) - 49, 0, 10) # if pressed     key 0 -> -1;    key 1 -> 0;		key 2 -> 1;
-
-class PlaceableObjectDefinition:
-	var object: PackedScene
-	var ghost: PackedScene
-	
-	func _init(obj, ghst):
-		object = obj
-		ghost = ghst

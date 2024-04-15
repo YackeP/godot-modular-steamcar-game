@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EngineComponentDefinition" load_steps=4 format=3 uid="uid://0f1pj0jus25t"]
+
+[ext_resource type="PackedScene" uid="uid://cco7xyyycqjq0" path="res://Scenes/PlacedObjects/SteamPiston.tscn" id="1_btnf6"]
+[ext_resource type="PackedScene" uid="uid://bat2ni48y20h" path="res://Scenes/PlacedObjectGhosts/SteamPistonGhost.tscn" id="2_ulo8g"]
+[ext_resource type="Script" path="res://Resources/EngineComponentDefinition.gd" id="3_6hj8g"]
+
+[resource]
+script = ExtResource("3_6hj8g")
+placementGhost = ExtResource("2_ulo8g")
+gridComponent = ExtResource("1_btnf6")

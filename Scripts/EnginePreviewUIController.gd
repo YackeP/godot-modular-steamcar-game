@@ -2,10 +2,8 @@ extends Control
 
 class_name EnginePreviewUIController
 
-@export
-var engineTilePanel: PackedScene
-@export
-var engineOutputSocketPanel: PackedScene
+@export var engineTilePanel: PackedScene
+@export var engineOutputSocketPanel: PackedScene
 
 var panelMaring: int = 10
 

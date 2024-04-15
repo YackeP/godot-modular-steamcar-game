@@ -68,6 +68,7 @@
 - [x] 03.12.2023 Refactor the PlacedObjects from StaticBody3D to Node3D with a child Collider, so that they can have a consistent collider object
 	- used scene inheritance to make this happen
 - [x] 03.12.2023 Make the component ghosts use SceneInheritance as well
+- [x] 15.04.2023 Refactor the steam boiler explosion handling
 - [ ] Refactor the engine preview UI
 - [ ] Reorganize the files and directories to utilize colocation more effectively
 
