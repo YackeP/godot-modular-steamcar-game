@@ -9,6 +9,7 @@ signal component_removed(component: GridComponent)
 const _RAY_LENGTH = 1000
 const _GRID_SLOT_LAYER_MASK := 0b00000000_00000000_00000000_00010000 # layer 5
 const _GRID_COMPONENT_LAYER_MASK := 0b00000000_00000000_00000000_00001000 # layer 4
+
 @onready 
 var _placeablesContainer = $Placeables
 
@@ -118,6 +119,8 @@ func _createGridComponent(object: PackedScene, pos: Vector3, rot: Vector3, gridS
 	objectInstance.setOccupiedSpaces(gridSpaces)
 	objectInstance.position = getNearestGridPosition(pos)
 	objectInstance.rotation = rot
+	component_added.emit(objectInstance)
+	objectInstance.registerController(self)
 
 func _tryPlaceGridComponent():
 	var hitGridSpace = getGridSpaceHitByMouse()
@@ -132,7 +135,8 @@ func _tryPlaceGridComponent():
 func _tryDeleteGridComponent():
 	var hitGridComponent = getGridComponentHitByMouse()
 	if hitGridComponent != null:
-		getGridComponentHitByMouse().onPress()
+		component_removed.emit(hitGridComponent)
+		hitGridComponent.onPress()
 
 
 func _get_pressed_number(event: InputEventKey):

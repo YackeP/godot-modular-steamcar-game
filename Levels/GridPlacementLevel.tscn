@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://jmr48tafi0tm" path="res://Scenes/BuildingBlocks/GridSpace.tscn" id="2_jqtlm"]
 [ext_resource type="PackedScene" uid="uid://ceutc06ahdbxi" path="res://Scenes/BuildingBlocks/WallInputSocket.tscn" id="3_p4qu7"]
 [ext_resource type="Script" path="res://Scripts/EnginePreviewUIController.gd" id="4_5ga0k"]
-[ext_resource type="PackedScene" uid="uid://b6l8uwxlfbpap" path="res://Scenes/UI/EngineTilePanel.tscn" id="5_okxq1"]
-[ext_resource type="PackedScene" uid="uid://bp06vsw8p3scf" path="res://Scenes/UI/EngineOutputSocketPanel.tscn" id="6_1y2qa"]
+[ext_resource type="PackedScene" uid="uid://b6l8uwxlfbpap" path="res://Scenes/UI/EnginePreview/EngineTilePanel.tscn" id="5_okxq1"]
+[ext_resource type="PackedScene" uid="uid://bp06vsw8p3scf" path="res://Scenes/UI/EnginePreview/EngineOutputSocketPanel.tscn" id="6_1y2qa"]
 
 [node name="GridPlacementController" type="Node3D" node_paths=PackedStringArray("_camera", "_inputSockets")]
 script = ExtResource("1_r2yk8")

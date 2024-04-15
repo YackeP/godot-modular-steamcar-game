@@ -26,6 +26,10 @@ var bottomOffset = 0.0
 @onready
 var spacePanels: Array = get_children().map(func(child: Node): return child is Panel)
 
+# THINK: should enginePreview know about the GridMap, or should the controller expose it?
+# 		We are coupling the UI to the structure of the physical grid elements
+@onready
+var gridSpacesParent: GridMap = $"../../GridMap"
 
 
 func _ready() -> void:
@@ -39,11 +43,8 @@ func _ready() -> void:
 	var bottomMax = 0.0
 	var leftMax = 0.0
 	var rightMax = 0.0
-
 	
-	var gridSpaces: GridMap = get_node("../../GridMap")
-	
-	for space: Node3D in gridSpaces.get_children():
+	for space: Node3D in gridSpacesParent.get_children():
 		topMax = max(topMax, space.position.z)
 		bottomMax = min(bottomMax, space.position.z)
 		leftMax = min(leftMax, space.position.x)
@@ -58,7 +59,7 @@ func _ready() -> void:
 	print("bottomLeftWorld: ", bottomLeftWorld)
 	print("topRightWorld: ", topRightWorld)
 	
-	for space: Node3D in gridSpaces.get_children():
+	for space: Node3D in gridSpacesParent.get_children():
 		var panelScene = _getPanelScene(space)
 		if(panelScene):
 			var engineTile: Panel = panelScene.instantiate()
@@ -69,10 +70,18 @@ func _ready() -> void:
 			engineTile.position = _calulatePanelSpace(space.position)
 
 func _handleComponentAdded(component: GridComponent):
-	pass
+	# TODO: add support for more components
+	# TODO: make the component into custom resources, which hold the UI, the ghost, and the component
+	if component is SteamBoiler:
+		var boilerPreviewScene = preload("res://Scenes/UI/EnginePreview/BoilerUIPreview.tscn")
+		var boilerPreview = boilerPreviewScene.instantiate()
+		add_child(boilerPreview)
+		boilerPreview.registerObject(component)
+		boilerPreview.position = _calulatePanelSpace(component.position)
 
 func _handleComponentRemoved(component: GridComponent):
-	pass
+	# FIXME: not type-safe
+	propagate_call("destroyRepresentingUI", [component])
 	
 func _getPanelScene(gridSpace: Node3D) -> PackedScene:
 	# FIXME: hardcoded class name to scene binding

@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://lpjuu4da71uc"]
+
+[ext_resource type="Script" path="res://Scenes/UI/EnginePreview/BoilerUIPreview.gd" id="1_0tvli"]
+[ext_resource type="Texture2D" uid="uid://clqa0mtxswmsk" path="res://Scenes/UI/EnginePreview/boiler_ui_icon.png" id="1_75jdx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_84mh1"]
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7sb4k"]
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[node name="BoilerUiPreview" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0tvli")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_75jdx")
+
+[node name="Steam" type="Label" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 8.0
+offset_right = 57.0
+offset_bottom = 31.0
+label_settings = SubResource("LabelSettings_84mh1")
+
+[node name="OverflowPercentage" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 19.0
+offset_right = 56.0
+offset_bottom = 42.0
+label_settings = SubResource("LabelSettings_7sb4k")
