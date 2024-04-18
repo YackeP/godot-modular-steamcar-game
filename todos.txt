@@ -57,9 +57,11 @@
 				- Steam piston -> get overpowered, or malfunction (positive effect is interesting)
 		- At the same time, this might not be wanted in all the buffers
 		- [x] 21.03.2024 SOLUTION: make a child subclass, and a new inherited scene for the Overflowable Boiler
-- [ ] make a GUI showing the components of the engine, with their state
+- [x] make a GUI showing the components of the engine, with their state
 	- [x] 14.04.2024 Show all the engine tiles in the UI
 	- [x] 15.05.2024 Show the boiler with it's state in the UI
+	- [x] 18.04.2024 Show the remaining engine elements in the UI
+	- [x] 18.04.2024 Handle rotation of the engine elements in the preview
 - [ ] make a button that releases pressure in all boilers and makes a horn sound
 	- [ ] make releasing the steam create a steam particle
 
@@ -73,8 +75,8 @@
 - [ ] Reorganize the files and directories to utilize colocation more effectively
 
 # nice to have
-- [ ] Spedometer graphic
-- [ ] UI for previewing the selected component
+- [x] Spedometer graphic
 - [ ] UI for selecting the components
+- [ ] UI for previewing the selected component without having to hover over a tile
 - [ ] Changing ghost color when placement is invalid
 	- might have to investigate shaders in Godot

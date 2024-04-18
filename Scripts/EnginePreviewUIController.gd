@@ -15,6 +15,8 @@ var topRightWorld: Vector2
 # the lowest and leftmost bounds of the UI
 var bottomLeftPanelLimit: Vector2
 
+var _margin = 0.5
+
 # we don't want to rely on the grid only having tiles in positions with non-negative coordinates
 var leftOffset = 0.0
 var bottomOffset = 0.0
@@ -67,10 +69,12 @@ func _ready() -> void:
 
 func _handleComponentAdded(component: GridComponent, componentDefinition: EngineComponentDefinition):
 	if componentDefinition.enginePreviewUIElement != null:
-		var preview = componentDefinition.enginePreviewUIElement.instantiate()
+		var preview: EngineElementUIPreviewBase = componentDefinition.enginePreviewUIElement.instantiate()
 		add_child(preview)
 		preview.registerObject(component)
-		preview.position = _calulatePanelSpace(component.position)
+		preview.position = _calculateComponentPanelSpace(component.position)
+		preview.rotation_degrees = _calculateComponentRotation(component.rotation_degrees)
+		
 
 func _handleComponentRemoved(component: GridComponent):
 	# FIXME: not type-safe
@@ -85,7 +89,12 @@ func _getPanelScene(gridSpace: Node3D) -> PackedScene:
 	return null
 
 
-# TODO/FIXME: handle rotation
 func _calulatePanelSpace(worldSpace: Vector3) -> Vector2:
 	# can probably add the size of the panel itself to the Y coordinate to make it lower
 	return Vector2(worldSpace.x + leftOffset, worldSpace.z - bottomOffset) * 50
+
+func _calculateComponentPanelSpace(worldSpace: Vector3) -> Vector2:
+	return Vector2(worldSpace.x + leftOffset + _margin, worldSpace.z - bottomOffset + _margin) * 50
+
+func _calculateComponentRotation(rotation: Vector3) -> float:
+	return rotation.y + 90

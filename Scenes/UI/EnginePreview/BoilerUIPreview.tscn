@@ -13,31 +13,29 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="BoilerUIPreview" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_0tvli")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -59.0
+offset_top = -20.0
+offset_right = 65.0
+offset_bottom = 20.0
 texture = ExtResource("1_75jdx")
 
 [node name="Steam" type="Label" parent="."]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 8.0
-offset_right = 57.0
-offset_bottom = 31.0
+offset_left = -43.0
+offset_top = -12.0
+offset_right = -3.0
+offset_bottom = 11.0
 label_settings = SubResource("LabelSettings_84mh1")
 
 [node name="OverflowPercentage" type="Label" parent="."]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 19.0
-offset_right = 56.0
-offset_bottom = 42.0
+offset_top = -11.0
+offset_right = 40.0
+offset_bottom = 12.0
 label_settings = SubResource("LabelSettings_7sb4k")
