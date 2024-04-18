@@ -12,7 +12,6 @@ size = Vector3(1, 1.47607, 2.08594)
 
 [node name="SteamPiston" node_paths=PackedStringArray("_outputSocket", "_steamBuffer") instance=ExtResource("1_f881l")]
 script = ExtResource("2_svsrl")
-steamCapacity = 3.0
 steamToPowerTransferRatio = 0.9
 steamConsumptionSpeed = 0.9
 _outputSocket = NodePath("Output Socket")
@@ -36,23 +35,29 @@ transform = Transform3D(-1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 0, 0, 0.3, 
 
 [node name="Input Socket" parent="." index="2" node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("2_xfxev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+visible = false
 targetResourceBuffer = NodePath("../SteamBuffer")
 
 [node name="Input Socket2" parent="." index="3" node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("2_xfxev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+visible = false
 targetResourceBuffer = NodePath("../SteamBuffer")
 
 [node name="Input Socket3" parent="." index="4" node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("2_xfxev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+visible = false
 targetResourceBuffer = NodePath("../SteamBuffer")
 
 [node name="Output Socket" parent="." index="5" instance=ExtResource("3_iwsin")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1)
+visible = false
 outputType = 3
 
 [node name="DebugNode" parent="." index="6" instance=ExtResource("4_u6dxr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34037, 0)
+visible = false
 
 [node name="SteamBuffer" parent="." index="7" instance=ExtResource("5_186xm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12802, 0.542177)
+visible = false
 resourceType = 2

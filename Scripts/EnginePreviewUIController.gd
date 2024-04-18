@@ -5,8 +5,6 @@ class_name EnginePreviewUIController
 @export var engineTilePanel: PackedScene
 @export var engineOutputSocketPanel: PackedScene
 
-var panelMaring: int = 10
-
 # for knowing where we should display the components icons
 # we need to translate the world space into the UI space
 var height: int
@@ -68,8 +66,6 @@ func _ready() -> void:
 			engineTile.position = _calulatePanelSpace(space.position)
 
 func _handleComponentAdded(component: GridComponent, componentDefinition: EngineComponentDefinition):
-	# TODO: add support for more components
-	# TODO: make the component into custom resources, which hold the UI, the ghost, and the component
 	if componentDefinition.enginePreviewUIElement != null:
 		var preview = componentDefinition.enginePreviewUIElement.instantiate()
 		add_child(preview)

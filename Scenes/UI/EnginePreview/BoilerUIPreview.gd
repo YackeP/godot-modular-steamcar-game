@@ -1,4 +1,4 @@
-extends Control
+extends EngineElementUIPreviewBase
 
 var boiler: SteamBoiler
 

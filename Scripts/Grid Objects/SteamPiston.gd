@@ -2,7 +2,6 @@ extends GridComponent
 
 class_name SteamPiston
 
-@export var steamCapacity: float = 5.0
 @export var steamToPowerTransferRatio: float = 0.9 # 1 steam = x power 
 @export var steamConsumptionSpeed: float = 0.9 # speed per second
 # power capacity is just 0, it makes no sense to store the produced energy, it is immidiately transferred

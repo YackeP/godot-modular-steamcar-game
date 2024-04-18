@@ -11,7 +11,7 @@ font_color = Color(0, 0, 0, 1)
 font_size = 10
 font_color = Color(0, 0, 0, 1)
 
-[node name="BoilerUiPreview" type="Control"]
+[node name="BoilerUIPreview" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

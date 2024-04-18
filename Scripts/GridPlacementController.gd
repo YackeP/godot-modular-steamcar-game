@@ -14,8 +14,9 @@ const _GRID_COMPONENT_LAYER_MASK := 0b00000000_00000000_00000000_00001000 # laye
 @export var _camera: Camera3D
 @export var _inputSockets: Array[WallInputSocket]
 
-# TODO: implement this using signals -> whenever any input gets changed, it sends a signal to here
-#	here, handle the input by updating some value, and then sending the total value as a message that gets received by the driving controller
+# IDEA: implement this using signals instead of using _process() to iterate every socket every frame
+#	- whenever any input gets changed, it sends a signal to here
+#	- here, handle the input by updating some value, and then sending the total value as a message that gets received by the driving controller
 var totalEnginePower: float = 0.0
 
 var _enabled: bool = false
