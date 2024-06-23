@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://diuilli57etc0"]
+[gd_scene load_steps=9 format=3 uid="uid://diuilli57etc0"]
 
-[ext_resource type="PackedScene" uid="uid://3aenfxjethb7" path="res://Models/PipeWorksPack/Meshes/cylo_tall.glb" id="1_4l6jb"]
 [ext_resource type="PackedScene" uid="uid://cce1gdkkskh77" path="res://Scenes/PlacedObjects/GridComponentBase.tscn" id="1_6o4vt"]
 [ext_resource type="Shape3D" uid="uid://dfdse2c1n21jl" path="res://Scenes/GridColliderShape.tres" id="2_imlft"]
 [ext_resource type="Script" path="res://Scripts/Grid Objects/SteamBoiler.gd" id="2_savo2"]
@@ -24,7 +23,7 @@ explodinessDecayRate = 10.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.439836, 0)
 shape = ExtResource("2_imlft")
 
-[node name="cylo_tall" parent="." index="1" instance=ExtResource("1_4l6jb")]
+[node name="cylo_tall" type="Node3D" parent="." index="1"]
 transform = Transform3D(0.18, 0, 0, 0, -7.86805e-09, -0.18, 0, 0.18, -7.86805e-09, 0, 0.448117, -1.23634)
 
 [node name="Input Socket" parent="." index="2" node_paths=PackedStringArray("targetResourceBuffer") instance=ExtResource("3_bdcx4")]
